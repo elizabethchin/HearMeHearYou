@@ -37,8 +37,8 @@ class Report(db.Model):
     __tablename__ = "reports"
 
     report_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    user_id = db.Column(db.Intiger, db.ForeignKey('users.user_id'), nullable=False)
-    date_time = db.Column(db.TIMESTAMPTZ, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    #date_time = db.Column(db.TIMESTAMPTZ, nullable=False)
     location = db.Column(db.String(100), nullable=True)
     witness = db.Column(db.String(100), nullable=True)
     anonymous = db.Column(db.Boolean, default=True)

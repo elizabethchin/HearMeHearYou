@@ -31,10 +31,10 @@ class User(db.Model):
         return ("<User user_id={} first_name={} last_name={} email={}>"
             .format(self.user_id, self.first_name, self.last_name, self.email))
 
-class Report(db.Model):
-    """List of reports."""
+class Inquiry(db.Model):
+    """List of inquiries."""
 
-    __tablename__ = "reports"
+    __tablename__ = "inquiries"
 
     report_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)

@@ -23,34 +23,57 @@ class User(db.Model):
     email = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(50), nullable=False)
 
-    reports = db.relationship('Report')
+    reports = db.relationship('Inquiry')
 
     def __repr__(self):
         """Provide helpful representation when printed."""
         
-        return ("<User user_id={} first_name={} last_name={} email={}>"
-            .format(self.user_id, self.first_name, self.last_name, self.email))
+        return ("<User information: user_id={} first_name={} last_name={} email={} password={}>"
+            .format(self.user_id, self.first_name, self.last_name, self.email, self.password))
 
 class Inquiry(db.Model):
     """List of inquiries."""
 
     __tablename__ = "inquiries"
 
-    report_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    inquiry_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    #date_time = db.Column(db.TIMESTAMPTZ, nullable=False)
+    todays_date = db.Column(db.TIMESTAMPTZ, nullable=False)
+    incident_date = db.Column(db.TIMESTAMPTZ, nullable=False)
     location = db.Column(db.String(100), nullable=True)
     witness = db.Column(db.String(100), nullable=True)
+    inquiry_text = db.Column(db.String(1000000), nullable=False)
     anonymous = db.Column(db.Boolean, default=True)
-    incident_descrip = db.Column(db.String(1000000), nullable=False)
 
     user = db.relationship('User')
 
     def __repr__(self):
         """Provide helpful representation when printed."""
-        return """<Report ID report_id={} user_id={} date_time={} location={}
-                witness={} anonymous={} incident_descrip={}>""".format(self.report_id, self.user_id, self.date_time, 
-                self.location, self.witness, self.anonymous, self.incident_descrip)
+        return """<Inquiry: inquiry_id={} user_id={} todays_date={} incident_date={}
+                location={} witness={} incident_text={} anonymous={}>""".format(self.inquiry_id, self.user_id, self.todays_date, 
+                self.incident_date, self.location, self.witness, self.inquiry_text, self.anonymous)
+
+class Response(db.Model):
+    """List of responses to inquiries."""
+
+    __tablename__ = "responses"
+
+    resolution_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    inquiry_id = db.Column(db.Integer, db.ForeignKey('inquiries.inquiry_id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    response_date = db.Column(db.TIMESTAMPTZ, nullable=False)
+    responding_to = db.Column(db.Integer, nullable=False)
+    response_text = db.Column(db.String(1000000), nullable=False)
+
+    user = db.relationship('User')
+    reports = db.relationship('Inquiry')
+
+    def __repr__(self):
+        """Provide helpful representation when printed."""
+        return """<Response: resolution_id={} inquiry_id={} user_id={} response_date={}
+                responding_to={} response_text={}>""".format(self.resolution_id, self.inquiry_id, self.user_id, self.response_date, 
+                self.responding_to, self.response_text)
+
 
 ##############################################################################
 # Helper functions

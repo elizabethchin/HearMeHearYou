@@ -23,7 +23,8 @@ class User(db.Model):
     email = db.Column(db.String(100), nullable=False)
     password = db.Column(db.String(50), nullable=False)
 
-    reports = db.relationship('Inquiry')
+    inquiries = db.relationship('Inquiry')
+    responses = db.relationship("Response")
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -38,14 +39,15 @@ class Inquiry(db.Model):
 
     inquiry_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    todays_date = db.Column(db.TIMESTAMPTZ, nullable=False)
-    incident_date = db.Column(db.TIMESTAMPTZ, nullable=False)
+    todays_date = db.Column(db.TIMESTAMP(timezone=True), nullable=False)
+    incident_date = db.Column(db.TIMESTAMP(timezone=True), nullable=False)
     location = db.Column(db.String(100), nullable=True)
     witness = db.Column(db.String(100), nullable=True)
     inquiry_text = db.Column(db.String(1000000), nullable=False)
     anonymous = db.Column(db.Boolean, default=True)
 
     user = db.relationship('User')
+    responses = db.relationship("Response")
 
     def __repr__(self):
         """Provide helpful representation when printed."""
@@ -61,12 +63,12 @@ class Response(db.Model):
     resolution_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     inquiry_id = db.Column(db.Integer, db.ForeignKey('inquiries.inquiry_id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    response_date = db.Column(db.TIMESTAMPTZ, nullable=False)
+    response_date = db.Column(db.TIMESTAMP(timezone=True), nullable=False)
     responding_to = db.Column(db.Integer, nullable=False)
     response_text = db.Column(db.String(1000000), nullable=False)
 
     user = db.relationship('User')
-    reports = db.relationship('Inquiry')
+    inquiries = db.relationship('Inquiry')
 
     def __repr__(self):
         """Provide helpful representation when printed."""

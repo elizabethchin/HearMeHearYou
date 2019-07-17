@@ -22,7 +22,7 @@ def load_users():
 
     # Read u.user file and insert data
     for row in open("seed_data/u.user"):
-        
+
         row = row.rstrip().split(",")
         user_id, first_name, last_name, email, password = row
 
@@ -32,11 +32,8 @@ def load_users():
                     email=email,
                     password=password)
 
-
-        # We need to add to the session or it won't ever be stored
         db.session.add(user)
 
-    # Once we're done, we should commit our work
     db.session.commit()
 
 
@@ -44,27 +41,24 @@ def load_inquiries():
     """Load movies from u.inquiry into database."""
     print("Inquiries")
 
-    Movie.query.delete()
+    Inquiry.query.delete()
 
     #Read u.item file and insert data
     for row in open("seed_data/u.inquiry"):
-        row = row.rstrip().split("|")
+        row = row.rstrip().split(",")
         print(row)
-        movie_id, title, released_str, empty, imdb_url = row[:5]
+        inquiry_id, user_id, todays_date, incident_date, location, witness, inquiry_text, anonymous = row
 
-        title = title[:-7]
+        inquiry = Inquiry(inquiry_id=inquiry_id,
+                    user_id=user_id,
+                    todays_date=todays_date,
+                    incident_date=incident_date,
+                    location=location,
+                    witness=witness,
+                    inquiry_text=inquiry_text,
+                    anonymous=anonymous)
 
-        if released_str:
-            released_at = datetime.strptime(released_str, "%d-%b-%Y")
-        else:
-            released_at = None
-
-        movie = Movie(movie_id=movie_id,
-                    title=title,
-                    released_at=released_at,
-                    imdb_url=imdb_url)
-
-        db.session.add(movie)
+        db.session.add(inquiry)
 
     db.session.commit()
 
@@ -73,22 +67,22 @@ def load_responses():
     """Load responses from u.response into database."""
     print("Responses")
 
-    Rating.query.delete()
+    Response.query.delete()
 
     for row in open("seed_data/u.response"):
-        row = row.rstrip().split("\t")
-        user_id, movie_id, score, extra = row
+        row = row.rstrip().split(",")
+        response_id, inquiry_id, user_id, response_date, responding_to, response_text = row
 
-        user_id = int(user_id)
-        movie_id = int(movie_id)
-        score = int(score)
+        response = Response(response_id=response_id,
+                            inquiry_id=inquiry_id,
+                            user_id=user_id,
+                            response_date=response_date,
+                            responding_to=responding_to,
+                            response_text=response_text)
 
-        rating = Rating(user_id=user_id,
-                        movie_id=movie_id,
-                        score=score)
-        db.session.add(rating)
+        db.session.add(response)
 
-    db.session.commit()
+    db.session.commit(response)
 
 
 if __name__ == "__main__":
@@ -99,6 +93,6 @@ if __name__ == "__main__":
 
     # Import different types of data
     load_users()
-    load_movies()
-    load_ratings()
+    load_inquiries()
+    load_responses()
     set_val_user_id()

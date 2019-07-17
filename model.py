@@ -40,7 +40,7 @@ class Inquiry(db.Model):
     inquiry_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     todays_date = db.Column(db.TIMESTAMP(timezone=True), nullable=False)
-    incident_date = db.Column(db.TIMESTAMP(timezone=True), nullable=False)
+    incident_date = db.Column(db.TIMESTAMP(timezone=True), nullable=True)
     location = db.Column(db.String(100), nullable=True)
     witness = db.Column(db.String(100), nullable=True)
     inquiry_text = db.Column(db.String(1000000), nullable=False)

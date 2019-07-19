@@ -23,10 +23,10 @@ def load_users():
     # Read u.user file and insert data
     for row in open("seed_data/u.user"):
 
-        row = row.rstrip().split(",")
+        row = row.rstrip().split("|")
         user_id, first_name, last_name, email, password = row
 
-        user = User(user_id=user_id,
+        user = User(user_id=int(user_id),
                     first_name=first_name,
                     last_name=last_name,
                     email=email,
@@ -45,18 +45,29 @@ def load_inquiries():
 
     #Read u.item file and insert data
     for row in open("seed_data/u.inquiry"):
-        row = row.rstrip().split(",")
+        row = row.rstrip().split("|")
         print(row)
         inquiry_id, user_id, todays_date, incident_date, location, witness, inquiry_text, anonymous = row
 
-        inquiry = Inquiry(inquiry_id=inquiry_id,
-                    user_id=user_id,
-                    todays_date=todays_date,
-                    incident_date=incident_date,
+
+        if todays_date == "none":
+            t_date = None
+        else:
+            t_date = datetime.strptime(incident_date, "%Y-%m-%d")
+
+        if incident_date == "none":
+            i_date = None
+        else:
+            i_date = datetime.strptime(incident_date, "%Y-%m-%d")
+
+        inquiry = Inquiry(inquiry_id=int(inquiry_id),
+                    user_id=int(user_id),
+                    todays_date=t_date,
+                    incident_date=i_date,
                     location=location,
                     witness=witness,
                     inquiry_text=inquiry_text,
-                    anonymous=anonymous)
+                    anonymous=bool(anonymous))
 
         db.session.add(inquiry)
 
@@ -70,14 +81,19 @@ def load_responses():
     Response.query.delete()
 
     for row in open("seed_data/u.response"):
-        row = row.rstrip().split(",")
+        row = row.rstrip().split("|")
         response_id, inquiry_id, user_id, response_date, responding_to, response_text = row
 
-        response = Response(response_id=response_id,
-                            inquiry_id=inquiry_id,
-                            user_id=user_id,
-                            response_date=response_date,
-                            responding_to=responding_to,
+        if response_date == "none":
+            r_date = None
+        else:
+            r_date = datetime.strptime(incident_date, "%Y-%m-%d")
+
+        response = Response(response_id=int(response_id),
+                            inquiry_id=int(inquiry_id),
+                            user_id=int(user_id),
+                            response_date=r_date,
+                            responding_to=int(responding_to),
                             response_text=response_text)
 
         db.session.add(response)

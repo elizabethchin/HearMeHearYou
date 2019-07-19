@@ -60,7 +60,7 @@ class Response(db.Model):
 
     __tablename__ = "responses"
 
-    resolution_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    response_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     inquiry_id = db.Column(db.Integer, db.ForeignKey('inquiries.inquiry_id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     response_date = db.Column(db.TIMESTAMP(timezone=True), nullable=False)
@@ -72,8 +72,8 @@ class Response(db.Model):
 
     def __repr__(self):
         """Provide helpful representation when printed."""
-        return """<Response: resolution_id={} inquiry_id={} user_id={} response_date={}
-                responding_to={} response_text={}>""".format(self.resolution_id, self.inquiry_id, self.user_id, self.response_date, 
+        return """<Response: response_id={} inquiry_id={} user_id={} response_date={}
+                responding_to={} response_text={}>""".format(self.response_id, self.inquiry_id, self.user_id, self.response_date, 
                 self.responding_to, self.response_text)
 
 

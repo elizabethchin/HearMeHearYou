@@ -10,7 +10,6 @@ from model import connect_to_db, db
 from server import app
 from datetime import datetime
 
-
 def load_users():
     """Load users from u.user into database."""
 

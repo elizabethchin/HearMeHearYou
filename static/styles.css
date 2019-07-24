@@ -1,0 +1,22 @@
+.div { 
+    display: inline-block;
+    padding: 10px;
+    width: 1000px;
+}
+
+body {
+    background-color: #bddbbf
+}
+
+#border {
+    border-style: solid;
+    border-width: 5px;
+    border-color: green;
+}
+
+h1 {
+    color: black;
+    font-family: sans-serif;
+    text-align: center;
+}
+

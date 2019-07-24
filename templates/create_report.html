@@ -1,0 +1,48 @@
+
+{% extends 'base.html'%}
+    {% block title %}Incident Report{% endblock %}
+
+{% block content %}
+
+<h1>Incident Report</h1>
+
+<form action="/create-report">
+
+    <div class="div">
+    	<label>Inquiry ID: </label>
+        <input type="text" inquiry_id="inquiry_id" placeholder="inquiry_id"><br>
+
+        <label>User ID: </label>
+        <input type="text" user_id="user_id" placeholder="user_id"><br>
+
+        <label>Today's Date: </label>
+        <input type="text" todays_date="todays_date" placeholder="today's date"><br>
+
+        <label>Incident Date: </label>
+        <input type="text" incident_date="incident_date" placeholder="incident date"><br>
+
+ 		<label>Location:  </label>
+        <input type="text" location="location" placeholder="location"><br>       
+
+        <label>Witness:  </label>
+        <input type="text" witness="witness" placeholder="witness" ><br>
+        <p>
+        <label>Inquiry text:  </label>
+        <textarea id = "myTextArea"
+                  rows = "15"
+                  cols = "80"> </textarea><br>
+    	</p>
+
+
+
+        <label>Anonymous:  </label>
+        <input type="text" anonymous="anonymous" placeholder="anonymous"><br>
+        
+        <button>Save to Archive</button><br>
+
+        <button>Submit to Ombuds</button>
+    </div>
+    
+</form>
+
+{% endblock %}

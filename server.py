@@ -10,25 +10,36 @@ app = Flask(__name__)
 app.jinja_env.undefined = StrictUndefined
 app.jinja_env.auto_reload = True
 
+app.secret_key = "ABC"
+
 #Routes
 
-@app.route("/")
-def homepage():
-    """Returns Homepage."""
+# @app.route("/")
+# def homepage():
+#     """Returns Homepage."""
     
-    return render_template("homepage.html")
+#     return render_template("homepage.html")
 
-@app.route("/welcome")
-def welcome():
-    """User's personal page after logging in."""
+# @app.route("/welcome")
+# def welcome():
+#     """User's personal page after logging in."""
   
-    return render_template("welcome.html")
+#     return render_template("welcome.html")
 
-@app.route("/view-all-reports")
-def get_name():
-    """List of users reports"""
 
-    return render_template("/view-all-reports")
+@app.route("/create-report")
+def create_report():
+	"""User can make a report."""
+
+
+	return render_template("create_report.html")
+
+
+# @app.route("/view-all-reports")
+# def view_all_reports():
+#     """List of users reports"""
+
+#     return render_template("/view_all_reports.html")
     
 
 if __name__ == "__main__":

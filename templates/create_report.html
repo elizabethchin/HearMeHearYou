@@ -9,17 +9,12 @@
 <form action="/create-report">
 
     <div class="div">
-    	<label>Inquiry ID: </label>
-        <input type="text" inquiry_id="inquiry_id" placeholder="inquiry_id"><br>
-
-        <label>User ID: </label>
-        <input type="text" user_id="user_id" placeholder="user_id"><br>
 
         <label>Today's Date: </label>
-        <input type="text" todays_date="todays_date" placeholder="today's date"><br>
+        <input type="date" todays_date="todays_date" placeholder="today's date"><br>
 
         <label>Incident Date: </label>
-        <input type="text" incident_date="incident_date" placeholder="incident date"><br>
+        <input type="date" incident_date="incident_date" placeholder="incident date"><br>
 
  		<label>Location:  </label>
         <input type="text" location="location" placeholder="location"><br>       
@@ -35,8 +30,8 @@
 
 
         <label>Anonymous:  </label>
-        <input type="text" anonymous="anonymous" placeholder="anonymous"><br>
-        
+        <input type="radio" true="true" id="anonymous"> True 
+        <input type="radio" false="false" id="anonymous"> False <br>
         <button>Save to Archive</button><br>
 
         <button>Submit to Ombuds</button>

@@ -32,6 +32,7 @@ app.secret_key = "ABC"
 
 #     return render_template("about.html")
 
+
 @app.route("/create-report")
 def create_report():
 	"""User can make a report."""

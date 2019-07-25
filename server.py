@@ -26,11 +26,15 @@ app.secret_key = "ABC"
   
 #     return render_template("welcome.html")
 
+# @app.route("/about")
+# def about():
+#     """Describes what this web app does."""
+
+#     return render_template("about.html")
 
 @app.route("/create-report")
 def create_report():
 	"""User can make a report."""
-
 
 	return render_template("create_report.html")
 

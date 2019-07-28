@@ -35,9 +35,30 @@ app.secret_key = "ABC"
 
 @app.route("/create-report")
 def create_report():
-	"""User can make a report."""
+    """Form for generating report."""
 
-	return render_template("create_report.html")
+    return render_template("create_report.html")
+
+    
+
+@app.route("/handle-report", methods=["POST"])
+def handle_report():
+    """Get information from report user created"""
+    
+    todays_date = request.form.get("todays_date")
+    incident_date = request.form.get("incident_date")
+    location = request.form.get("location")
+    witness = request.form.get("witness")
+    inquiry_text = request.form.get("inquiry_text")
+    anonymous = request.form.get("anonymous")
+
+    return render_template("view_report.html",
+                    todays_date=todays_date,
+                    incident_date=incident_date,
+                    location=location,
+                    witness=witness,
+                    inquiry_text=inquiry_text,
+                    anonymous=anonymous)
 
 
 # @app.route("/view-all-reports")

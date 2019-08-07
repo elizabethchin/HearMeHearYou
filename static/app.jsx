@@ -42,8 +42,6 @@ render <p> thank you for subbming, you have subbmited {this.props.number} previo
 
 
 
-
-
 ReactDOM.render(
     <App />,
     document.getElementById("root")

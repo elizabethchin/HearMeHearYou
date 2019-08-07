@@ -14,11 +14,11 @@ app.secret_key = "ABC"
 
 #Routes
 
-# @app.route("/")
-# def homepage():
-#     """Returns Homepage."""
+@app.route("/")
+def homepage():
+    """Returns Homepage."""
     
-#     return render_template("homepage.html")
+    return render_template("base.html")
 
 # @app.route("/welcome")
 # def welcome():

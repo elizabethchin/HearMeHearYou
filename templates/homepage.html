@@ -1,0 +1,30 @@
+
+{% extends 'base.html'%}
+{% block title %}Welcome to HearME{% endblock %}
+
+{% block content %}
+
+<h1>Welcome to HearME</h1>
+
+<form action="/get-login-info">
+
+<div class="login">
+
+    <label>Email</label>
+    <input type="text" name="email" placeholder="email"><br>
+
+    <label>Password </label>
+    <input type="text" name="password" placeholder="password"><br>
+
+    <button>Login</button><br>
+    <button>Create New User</button>
+</div>
+</form>
+
+<form>
+    <div class="create_new_user">
+    <button>Create New User</button>
+    </div>div>
+</form>
+
+{% endblock %}

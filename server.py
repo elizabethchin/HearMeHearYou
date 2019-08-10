@@ -18,7 +18,20 @@ app.secret_key = "ABC"
 def homepage():
     """Returns Homepage."""
     
-    return render_template("base.html")
+    return render_template("homepage.html")
+
+
+@app.route("/get-login-info")
+def get_name():
+    """Gets user's email and password."""
+    #get email and password that the user submitted
+    email = request.args.get("email")
+    password = request.args.get("password")
+    #store name and email in session
+    session["email"] = email
+    session["password"] = password
+    
+    return redirect("/")
 
 # @app.route("/welcome")
 # def welcome():

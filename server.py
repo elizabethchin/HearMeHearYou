@@ -41,7 +41,7 @@ def process_login():
     
     flash("Logged In")
     
-    return redirect(f"/users/{user.user_id}")
+    return redirect("/")
 
 @app.route("/users/{user.user_id}")
 def show_user_page():

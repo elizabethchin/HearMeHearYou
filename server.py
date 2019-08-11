@@ -21,17 +21,32 @@ def homepage():
     return render_template("homepage.html")
 
 
-@app.route("/get-login-info")
-def get_name():
+@app.route("/login", methods=["POST"])
+def process_login():
     """Gets user's email and password."""
+
     #get email and password that the user submitted
     email = request.args.get("email")
     password = request.args.get("password")
-    #store name and email in session
-    session["email"] = email
-    session["password"] = password
+
+    user = User.query.filter_by(email=email).first()
+
+    if not user:
+        flash("No such user")
+
+    if user.password != password:
+        flash("Incorrect password")
+
+    session["user_id"] = user.user_id
     
-    return redirect("/")
+    flash("Logged In")
+    
+    return redirect(f"/users/{user.user_id}")
+
+@app.route("/users/{user.user_id}")
+def show_user_page():
+
+    return render_template("user_page.html")
 
 # @app.route("/welcome")
 # def welcome():

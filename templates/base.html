@@ -17,6 +17,20 @@
 </head>    
 <body>
 
+	{% if "user_id" in session %}
+		<a href="/logout">Logout</a>
+	{% else %}
+		<a href="/login">Login</a>
+	{% endif %}
+	
+	<hr>
+	<ul>
+		{% for message in get_flashed_messages() %}
+		<div class="alert alert-warning">{{ message }}</div>
+		{% endfor %}
+	</ul>
+	
+
 	{% block content %}
 	{% endblock %}
 

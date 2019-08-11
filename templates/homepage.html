@@ -4,9 +4,9 @@
 
 {% block content %}
 
-<h1>Welcome to HearME</h1>
+<h1>Welcome to HearMe</h1>
 
-<form action="/get-login-info">
+<form action="/login" method="POST">
 
 <div class="login">
 
@@ -17,14 +17,14 @@
     <input type="text" name="password" placeholder="password"><br>
 
     <button>Login</button><br>
-    <button>Create New User</button>
+
 </div>
 </form>
 
-<form>
+<form action="/new-user"></form>
     <div class="create_new_user">
     <button>Create New User</button>
-    </div>div>
+    </div>
 </form>
 
 {% endblock %}

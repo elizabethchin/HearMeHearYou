@@ -3,28 +3,22 @@
 {% block title %}Welcome to HearME{% endblock %}
 
 {% block content %}
+    <h1>Welcome to HearMe</h1>
+    <form action="/login" method="POST">
+        <div class="login">
+            <label>Email</label>
+            <input type="text" name="email" placeholder="email" required><br>
 
-<h1>Welcome to HearMe</h1>
+            <label>Password </label>
+            <input type="text" name="password" placeholder="password" required><br>
+            <button>Login</button><br>
+        </div>
+    </form>
 
-<form action="/login" method="POST">
-
-<div class="login">
-
-    <label>Email</label>
-    <input type="text" name="email" placeholder="email"><br>
-
-    <label>Password </label>
-    <input type="text" name="password" placeholder="password"><br>
-
-    <button>Login</button><br>
-
-</div>
-</form>
-
-<form action="/new-user"></form>
-    <div class="create_new_user">
-    <button>Create New User</button>
-    </div>
-</form>
+    <form action="/register">
+        <div class="register">
+        <button>Register</button>
+        </div>
+    </form>
 
 {% endblock %}

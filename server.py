@@ -1,9 +1,11 @@
 """Project Website."""
 
 from jinja2 import StrictUndefined
+
 from flask import Flask, render_template, redirect, request, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
-from model import User, Inquiry, Response
+
+from model import connect_to_db, db, User, Inquiry, Response
 
 app = Flask(__name__)
 
@@ -26,46 +28,64 @@ def process_login():
     """Gets user's email and password."""
 
     #get email and password that the user submitted
-    email = request.args.get("email")
-    password = request.args.get("password")
+    email = request.form["email"]
+    password = request.form["password"]
 
     user = User.query.filter_by(email=email).first()
 
     if not user:
         flash("No such user")
+        return redirect("/")
 
     if user.password != password:
         flash("Incorrect password")
+        return redirect("/")
 
     session["user_id"] = user.user_id
     
     flash("Logged In")
     
+    return redirect("f"/users/{user.user_id})
+
+@app.route("/logout")
+def logout():
+    """Log out."""
+
+    del session["user_id"]
+    flash("Logged Out.")
     return redirect("/")
 
-@app.route("/users/{user.user_id}")
-def show_user_page():
+@app.route("/register")
+def register():
+    """Show new user registration form."""
+    
 
-    return render_template("user_page.html")
+    return render_template("register.html")
 
-# @app.route("/welcome")
-# def welcome():
-#     """User's personal page after logging in."""
-  
-#     return render_template("welcome.html")
+@app.route("/register", methods=["POST"])
+def process_registration():
+    """Process new user registration form."""
 
-# @app.route("/about")
-# def about():
-#     """Describes what this web app does."""
+    first_name = request.form["fname"] #get this from html where name=""
+    last_name = request.form["lname"]
+    email = request.form["email"]
+    password = request.form["password"]
 
-#     return render_template("about.html")
+    new_user = User(first_name=first_name, last_name=last_name, email=email, password=password)
+    
+    db.session.add(new_user)
+    db.session.commit()
+
+    flash(f"User {first_name} {last_name} added.")
+
+    return redirect("/")
 
 
-@app.route("/create-report")
-def create_report():
-    """Form for generating report."""
+# @app.route("/create-report")
+# def create_report():
+#     """Form for generating report."""
 
-    return render_template("create_report.html")
+#     return render_template("create_report.html")
 
     
 

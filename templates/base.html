@@ -17,19 +17,22 @@
 </head>    
 <body>
 	
-	{% block content %}
+	<!-- can't put flash messages inside block content -->
 
-		{% if "user_id" in session %}
-			<a href="/logout">Logout</a>
-		{% endif %}
-		
-		<hr>
-		
-		{% for flash in get_flashed_messages() %}
-			{{ flash }}
+	{% if "user_id" in session %}
+		<a href="/logout">Logout</a>
+	{% endif %}
+	
+	<hr>
+	
+	<ul>
+		{% for message in get_flashed_messages() %}
+			<li>{{ message }}</li>
 		{% endfor %}
+	</ul>
 	
 	
+	{% block content %}
 	{% endblock %}
 
 

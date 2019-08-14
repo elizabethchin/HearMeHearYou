@@ -10,7 +10,6 @@ from model import connect_to_db, db, User, Inquiry, Response
 app = Flask(__name__)
 
 app.jinja_env.undefined = StrictUndefined
-app.jinja_env.auto_reload = True
 
 app.secret_key = "ABC"
 
@@ -18,7 +17,7 @@ app.secret_key = "ABC"
 
 @app.route("/")
 def homepage():
-    """Returns Homepage."""
+    """Returns Homepage with login."""
     
     return render_template("homepage.html")
 
@@ -45,7 +44,7 @@ def process_login():
     
     flash("Logged In")
     
-    return redirect("f"/users/{user.user_id})
+    return redirect(f"/users/{user.user_id}")
 
 @app.route("/logout")
 def logout():
@@ -79,6 +78,21 @@ def process_registration():
     flash(f"User {first_name} {last_name} added.")
 
     return redirect("/")
+
+@app.route("/users")
+def user_list():
+    """Display list of users."""
+
+    users = User.query.all()
+
+    return render_template("user_list.html", users=users)
+
+@app.route("/users/<int:user_id>")
+def user_detail(user_id):
+    """User's Information."""
+
+    user = User.query.get(user_id)
+    return render_template("user.html", user=user)
 
 
 # @app.route("/create-report")
@@ -120,7 +134,7 @@ if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the
     # point that we invoke the DebugToolbarExtension
     app.debug = True
-
+    connect_to_db(app)
     # Use the DebugToolbar
     DebugToolbarExtension(app)
 

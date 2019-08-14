@@ -19,10 +19,9 @@ def load_users():
     for row in open("seed_data/u.user"):
 
         row = row.rstrip().split("|")
-        user_id, first_name, last_name, email, password = row
+        first_name, last_name, email, password = row
 
-        user = User(user_id=int(user_id),
-                    first_name=first_name,
+        user = User(first_name=first_name,
                     last_name=last_name,
                     email=email,
                     password=password)
@@ -41,7 +40,7 @@ def load_inquiries():
     for row in open("seed_data/u.inquiry"):
         row = row.rstrip().split("|")
         print(row)
-        inquiry_id, user_id, todays_date, incident_date, location, witness, inquiry_text, anonymous = row
+        user_id, todays_date, incident_date, location, witness, inquiry_text, anonymous = row
         
         if todays_date == "none":
        		t_date = None
@@ -53,8 +52,7 @@ def load_inquiries():
         else:
             i_date = datetime.strptime(incident_date, "%d-%b-%Y")
 
-        inquiry = Inquiry(inquiry_id=int(inquiry_id),
-                    user_id=int(user_id),
+        inquiry = Inquiry(user_id=int(user_id),
                     todays_date=t_date,
                     incident_date=i_date,
                     location=location,

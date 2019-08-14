@@ -12,4 +12,16 @@
 <h1> Inquiry Text:{{inquiry_text}}</h1></br>
 <h1> Anonymous:{{anonymous}}</h1></br>
 
+class Todays_date extends React.Component {
+    render() {
+        return<p> Today's Date: {this.props.Todays_date}</p>
+    }
+}
+
+ReactDOM.render(
+    <Todays_date />,
+    document.getElementById("root")
+);
+
 {% endblock %}
+

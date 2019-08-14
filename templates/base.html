@@ -19,18 +19,16 @@
 	
 	{% block content %}
 
-	{% if "user_id" in session %}
-		<a href="/logout">Logout</a>
-	{% endif %}
-	
-	<hr>
-	<ul>
-		{% for message in get_flashed_messages() %}
-		<div class="alert alert-warning">{{ message }}</div>
+		{% if "user_id" in session %}
+			<a href="/logout">Logout</a>
+		{% endif %}
+		
+		<hr>
+		
+		{% for flash in get_flashed_messages() %}
+			{{ flash }}
 		{% endfor %}
-	</ul>
 	
-
 	
 	{% endblock %}
 

@@ -41,10 +41,29 @@ def process_login():
         return redirect("/")
 
     session["user_id"] = user.user_id
-    
+    print("HIII")
     flash("Logged In")
+    print("HERE")
     
-    return redirect(f"/users/{user.user_id}")
+    return redirect(f"/user/{user.user_id}")
+
+
+@app.route("/user/<int:user_id>")
+def user_detail(user_id):
+    """User's Information."""
+    
+    user = User.query.get(user_id)
+   
+    return render_template("user.html", user=user)
+
+@app.route("/inquiry/<int:inquiry_id>")
+def report_detail(inquiry_id):
+    """Report details."""
+
+    inquiry_id = Inquiry.query.filter_by(inquiry_id)
+
+    return render_template("view_report.html", inquiry_id=inquiry_id)
+
 
 @app.route("/logout")
 def logout():
@@ -79,28 +98,13 @@ def process_registration():
 
     return redirect("/")
 
-@app.route("/users")
-def user_list():
-    """Display list of users."""
-
-    users = User.query.all()
-
-    return render_template("user_list.html", users=users)
-
-@app.route("/users/<int:user_id>")
-def user_detail(user_id):
-    """User's Information."""
-    print('this is user detaisl')
-    user = User.query.get(user_id)
-    print(user)
-    return render_template("user.html", user=user)
 
 
-# @app.route("/create-report")
-# def create_report():
-#     """Form for generating report."""
+@app.route("/create-report")
+def create_report():
+    """Form for generating report."""
 
-#     return render_template("create_report.html")
+    return render_template("create_report.html")
 
     
 

@@ -1,10 +1,7 @@
 """Utility file to seed ratings database from MovieLens data in seed_data/"""
 
 from sqlalchemy import func
-from model import User
-from model import Inquiry # remember to import so class can be accessed
-from model import Response
-
+from model import User, Inquiry, Response # remember to import so class can be accessed
 
 from model import connect_to_db, db
 from server import app

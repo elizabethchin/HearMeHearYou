@@ -1,20 +1,21 @@
 {% extends 'base.html'%}
 {% block content %}
 
-<h2>User Information</h2>
-<p>
-    Name: {{ user.first_name }} {{ user.last_name }}
-</p>
+    <h2>User Information</h2>
+    <p>
+        Name: {{ user.first_name }} {{ user.last_name }}
+    </p>
 
 
-{% if user.inquiries %}
-    <h2>Submitted Inquiries</h2>
-    <ul>
-        {% for inquiry in user.inquiries %}
-            <li>
-                <a href="/inquiry/{{ user.inquiry_id }}"> {{ user.inqiuiry_id }}</a>
-            </li>
-        {% endfor %}
-    </ul>
+    {% if user.inquiries %}
+        <h2>Submitted Inquiries</h2>
+        <ul>
+            {% for inquiry in user.inquiries %}
+                <li>
+                    <a href="/inquiry/{{ inquiry.inquiry_id }}"> {{ inquiry.inquiry_id }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     
 {% endblock %}

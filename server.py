@@ -90,8 +90,9 @@ def user_list():
 @app.route("/users/<int:user_id>")
 def user_detail(user_id):
     """User's Information."""
-
+    print('this is user detaisl')
     user = User.query.get(user_id)
+    print(user)
     return render_template("user.html", user=user)
 
 

@@ -60,9 +60,10 @@ def user_detail(user_id):
 def report_detail(inquiry_id):
     """Report details."""
 
-    inquiry_id = Inquiry.query.filter_by(inquiry_id)
+    inquiry = Inquiry.query.get(inquiry_id)
 
-    return render_template("view_report.html", inquiry_id=inquiry_id)
+    return render_template("view_report.html", inquiry=inquiry)
+
 
 
 @app.route("/logout")
@@ -128,11 +129,6 @@ def handle_report():
                     anonymous=anonymous)
 
 
-# @app.route("/view-all-reports")
-# def view_all_reports():
-#     """List of users reports"""
-
-#     return render_template("/view_all_reports.html")
     
 
 if __name__ == "__main__":

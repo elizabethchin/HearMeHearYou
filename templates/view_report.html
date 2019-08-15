@@ -1,15 +1,16 @@
 
 {% extends 'base.html'%}
-{% block title %}Incident Report{% endblock %}
+{% block title %}Report #{{ inquiry.inquiry_id }}{% endblock %}
 
 {% block content %}
-<div id="root"></div>
+<div id="root">
 
-<h1> Today's date:{{todays_date}}</h1></br>
-<h1> Incident date:{{incident_date}}</h1></br>
-<h1> Location:{{location}}</h1></br>
-<h1> Witness:{{witness}}</h1></br>
-<h1> Inquiry Text:{{inquiry_text}}</h1></br>
-<h1> Anonymous:{{anonymous}}</h1></br>
+<h3> Today's date:{{ inquiry.todays_date }}</h3></br>
+<h3> Incident date:{{ inquiry.incident_date }}</h3></br>
+<h3> Location:{{ inquiry.location }}</h3></br>
+<h3> Witness:{{ inquiry.witness }}</h3></br>
+<h3> Inquiry Text:{{ inquiry.inquiry_text }}</h3></br>
+<h3> Anonymous:{{ inquiry.anonymous }}</h3></br>
 
+</div>
 {% endblock %}

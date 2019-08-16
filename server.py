@@ -44,7 +44,11 @@ def process_login():
     
     flash("Logged In")
     
-    return redirect(f"/user/{user.user_id}")
+    if user.user_id == 6:
+        return redirect("/user_list")
+    
+    else:
+        return redirect(f"/user/{user.user_id}")
 
 
 @app.route("/user/<int:user_id>")
@@ -58,6 +62,7 @@ def user_detail(user_id):
 @app.route("/inquiry/<int:inquiry_id>")
 def report_detail(inquiry_id):
     """Report details."""
+
 
     inquiry = Inquiry.query.get(inquiry_id)
 
@@ -143,8 +148,15 @@ def handle_respons():
 @app.route("/user_list")
 def list_users():
 
-    users = User.query.all()
-    return render_template("user_list.html", users=users)
+    if session["user_id"] == 6:
+
+        users = User.query.all()
+        return render_template("user_list.html", users=users)
+    
+    else:
+        return redirect("/")
+
+
 
 
 

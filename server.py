@@ -41,9 +41,8 @@ def process_login():
         return redirect("/")
 
     session["user_id"] = user.user_id
-    print("HIII")
+    
     flash("Logged In")
-    print("HERE")
     
     return redirect(f"/user/{user.user_id}")
 

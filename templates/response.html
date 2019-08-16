@@ -1,0 +1,30 @@
+
+{% extends 'base.html'%}
+{% block title %}Response Form{% endblock %}
+
+{% block content %}
+
+<h1>Response Form</h1>
+
+<form action="/handle-report" method="POST">
+
+<div class="div">
+
+    <label>Today's Date: </label>
+    <input type="date" name="todays_date" placeholder="today's date"><br>
+
+
+    <p>
+    <label>Reply:</label>
+    <textarea type="text"
+            name="inquiry_text"
+            id = "myTextArea"
+            rows = "15"
+            cols = "80"> </textarea><br>
+    </p>
+    <button>submit</button>
+</div>
+
+</form>
+
+{% endblock %}

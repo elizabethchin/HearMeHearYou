@@ -130,6 +130,22 @@ def handle_report():
 
     return redirect(f"/user/{user_id}")
 
+@app.route("/response")
+def response_form(): 
+
+    return render_template("response.html")
+
+@app.route("/reponse", methods=["POST"])
+def handle_respons():
+
+    pass
+
+@app.route("/user_list")
+def list_users():
+
+    users = User.query.all()
+    return render_template("user_list.html", users=users)
+
 
 
 

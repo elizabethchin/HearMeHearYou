@@ -88,6 +88,7 @@ def process_registration():
     last_name = request.form["lname"]
     email = request.form["email"]
     password = request.form["password"]
+    
 
     new_user = User(first_name=first_name, last_name=last_name, email=email, password=password)
     
@@ -117,18 +118,20 @@ def handle_report():
     location = request.form.get("location")
     witness = request.form.get("witness")
     inquiry_text = request.form.get("inquiry_text")
-    anonymous = request.form.get("anonymous")
+    anonymous = request.form.get(bool("anonymous"))
+    user_id = session["user_id"]
 
-    return render_template("view_report.html",
-                    todays_date=todays_date,
-                    incident_date=incident_date,
-                    location=location,
-                    witness=witness,
-                    inquiry_text=inquiry_text,
-                    anonymous=anonymous)
-
-
+    new_inquiry = Inquiry(user_id=user_id, todays_date=todays_date, location=location, witness=witness, inquiry_text=inquiry_text, anonymous=anonymous)
     
+    db.session.add(new_inquiry)
+    db.session.commit()
+
+    flash("New Inquiry added")
+
+    return redirect(f"/user/{user_id}")
+
+
+
 
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the

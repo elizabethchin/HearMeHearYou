@@ -19,11 +19,36 @@
 
 </div>
 
+<div> 
     {% if user_id == 6 %}
-        response<br>
-        <button>Reply</button>
+    
+    <h1>Response Form</h1>
+
+    <form action="/reply-form" method="POST">
+    
+    <div>
+        <label name="user_id" value="{{ inquiry.user_id }}">Replying to User ID# {{ inquiry.user_id }}</label><br>
+        <label name="inquiry_id" value="{{ inquiry.inquiry_id }}">Replying to Inquiry ID# {{ inquiry.inquiry_id }}</label><br>
+        <label name="responding_to" value="{{ inquiry.inquiry_id }}" hidden></label><br>
+        <label>Today's Date: </label>
+        <input type="date" name="todays_date" placeholder="today's date"><br>
+    
+        <p>
+        <label>Reply:</label>
+        <textarea type="text"
+                name="response_text"
+                id = "myTextArea"
+                rows = "15"
+                cols = "80"> </textarea><br>
+        </p>
+        <button>Submit Reply</button>
+
+    </div>
+    
+    </form>
         
     {% endif %} 
+</div>
 
 
 

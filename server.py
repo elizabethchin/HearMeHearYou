@@ -43,7 +43,7 @@ def process_login():
     session["user_id"] = user.user_id
     
     flash("Logged In")
-    
+
     if user.user_id == 6:
         return redirect("/user_list")
     
@@ -63,11 +63,10 @@ def user_detail(user_id):
 def report_detail(inquiry_id):
     """Report details."""
 
-
+    user_id = session["user_id"]
     inquiry = Inquiry.query.get(inquiry_id)
-
-    return render_template("view_report.html", inquiry=inquiry)
-
+    
+    return render_template("view_report.html", inquiry=inquiry, user_id=user_id)
 
 
 @app.route("/logout")
@@ -82,7 +81,6 @@ def logout():
 def register():
     """Show new user registration form."""
     
-
     return render_template("register.html")
 
 @app.route("/register", methods=["POST"])

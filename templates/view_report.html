@@ -19,14 +19,12 @@
 
 </div>
 
-<div id="inquiry_response">
+    {% if user_id == 6 %}
+        response<br>
+        <button>Reply</button>
+        
+    {% endif %} 
 
-    {% if response %}
-    <h1>
-        Response
-    </h1>
-    {% endif %}
-</div>
 
 
 {% endblock %}

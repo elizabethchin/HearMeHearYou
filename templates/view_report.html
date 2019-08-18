@@ -7,7 +7,7 @@
 
 <div id="inquiry_report">
     <h1>
-        Incident
+        Incident:
     </h1>
 
     <h3> Today's date:{{ inquiry.todays_date }}</h3></br>
@@ -19,6 +19,20 @@
 
 </div>
 
+<div>
+    
+    <h1> Replies: </h1>
+    
+    {% for response in responses %}
+        <li>{{ user.first_name }} {{ user.last_name }}: {{ response.response_date }}: {{ response.response_text }}</li></ul></br>
+
+    {% endfor %}
+    
+   
+
+</div>
+
+
 <div> 
     {% if user_id == 6 %}
     
@@ -27,14 +41,15 @@
     <form action="/reply-form" method="POST">
     
     <div>
-        <label name="user_id" value="{{ inquiry.user_id }}">Replying to User ID# {{ inquiry.user_id }}</label><br>
-        <label name="inquiry_id" value="{{ inquiry.inquiry_id }}">Replying to Inquiry ID# {{ inquiry.inquiry_id }}</label><br>
-        <label name="responding_to" value="{{ inquiry.inquiry_id }}" hidden></label><br>
-        <label>Today's Date: </label>
+        Person Replying:<input name="person_replying" value={{ user_id }}><br>
+        Replying to User ID#<input name="user_id" value="{{ inquiry.user_id }}"><br>
+        Replying to Inquiry ID#<input name="inquiry_id" value="{{ inquiry.inquiry_id }}"><br>
+        Responding to thread # <input name="responding_to" value="{{ inquiry.inquiry_id }}"><br>
+        Today's Date:
         <input type="date" name="todays_date" placeholder="today's date"><br>
     
         <p>
-        <label>Reply:</label>
+        Reply:
         <textarea type="text"
                 name="response_text"
                 id = "myTextArea"

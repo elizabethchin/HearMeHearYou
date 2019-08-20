@@ -24,7 +24,7 @@
     <h1> Replies: </h1>
     
     {% for response in responses %}
-        <li>{{ user.first_name }} {{ user.last_name }}: {{ response.response_date }}: {{ response.response_text }}</li></ul></br>
+        <li>{{ user.first_name }} {{ user.last_name }} - {{ response.response_date }}: {{ response.response_text }}</li></ul></br>
 
     {% endfor %}
     

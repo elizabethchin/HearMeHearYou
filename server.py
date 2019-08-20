@@ -67,12 +67,12 @@ def report_detail(inquiry_id):
     inquiry = Inquiry.query.get(inquiry_id)
     responses = Response.query.filter(Response.inquiry_id == inquiry_id)
     person_replying = Response.query.filter(Response.person_replying == inquiry_id).first()
-    user = User.query.filter(User.user_id == person_replying).first()
+    user = User.query.filter(User.user_id == 6).first()
 
     print("kfdhjkdshfjkdsjfl;dsjlfjdslfjsld")
     print(person_replying)
     print()
-    print()
+    
     print()
     print("fkjshdjkfdsjkfhsd")
 

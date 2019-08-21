@@ -62,12 +62,16 @@ def user_detail(user_id):
 @app.route("/inquiry/<int:inquiry_id>")
 def report_detail(inquiry_id):
     """Report details."""
-
     user_id = session["user_id"]
     inquiry = Inquiry.query.get(inquiry_id)
-    responses = Response.query.filter(Response.inquiry_id == inquiry_id)
+    responses = Response.query.options(joinedload(Response.user_id)).filter(Response.inquiry_id == inquiry_id).all()
+    
+
+    print('getting responses !!: ')
+    print(responses)
+
     person_replying = Response.query.filter(Response.person_replying == inquiry_id).first()
-    user = User.query.filter(User.user_id == 6).first()
+    # user = User.query.filter(User.user_id == 6).first()
 
     print("kfdhjkdshfjkdsjfl;dsjlfjdslfjsld")
     print(person_replying)
@@ -76,8 +80,7 @@ def report_detail(inquiry_id):
     print()
     print("fkjshdjkfdsjkfhsd")
 
-    return render_template("view_report.html", inquiry=inquiry, 
-        user_id=user_id, responses=responses, user=user, person_replying=person_replying)
+    return render_template("view_report.html", inquiry=inquiry, responses=responses)
 
 @app.route("/logout")
 def logout():

@@ -64,23 +64,23 @@ def report_detail(inquiry_id):
     """Report details."""
     user_id = session["user_id"]
     inquiry = Inquiry.query.get(inquiry_id)
-    responses = Response.query.options(joinedload(Response.user_id)).filter(Response.inquiry_id == inquiry_id).all()
-    
+    responses = Response.query.filter(Response.inquiry_id == inquiry_id).all()
 
     print('getting responses !!: ')
-    print(responses)
+    print(responses[0].user.first_name)
 
     person_replying = Response.query.filter(Response.person_replying == inquiry_id).first()
-    # user = User.query.filter(User.user_id == 6).first()
+    user = User.query.filter(User.user_id == 6).first()
 
     print("kfdhjkdshfjkdsjfl;dsjlfjdslfjsld")
     print(person_replying)
-    print()
+    print(responses)
     
     print()
     print("fkjshdjkfdsjkfhsd")
 
-    return render_template("view_report.html", inquiry=inquiry, responses=responses)
+    return render_template("view_report.html", inquiry=inquiry, 
+        user_id=user_id, responses=responses, user=user, person_replying=person_replying)
 
 @app.route("/logout")
 def logout():

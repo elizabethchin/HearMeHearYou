@@ -75,7 +75,7 @@ def report_detail(inquiry_id):
 def logout():
     """Log out."""
 
-    session.pop('user', None)
+    del session["user_id"]
     flash("Logged Out.")
     return redirect("/")
 

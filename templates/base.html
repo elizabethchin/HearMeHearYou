@@ -12,7 +12,9 @@
 	<!-- {% block js %}
 	<script src="static/app.jsx" type="text/jsx"></script>
 	<div id="root"></div>
-    {% endblock %} -->
+	{% endblock %} -->
+	
+	<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=CALLBACK"></script>
 
 </head>    
 <body>
@@ -21,6 +23,7 @@
 
 	{% if "user_id" in session %}
 		<a href="/logout">Logout</a>
+		<a href="/user/{{ session['user_id'] }}">Homepage</a>
 	{% endif %}
 	
 	<hr>

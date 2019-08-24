@@ -63,24 +63,13 @@ def user_detail(user_id):
 def report_detail(inquiry_id):
     """Report details."""
     user_id = session["user_id"]
+
     inquiry = Inquiry.query.get(inquiry_id)
-    responses = Response.query.filter(Response.inquiry_id == inquiry_id).all()
-
-    print('getting responses !!: ')
-    print(responses[0].user.first_name)
-
-    person_replying = Response.query.filter(Response.person_replying == inquiry_id).first()
-    user = User.query.filter(User.user_id == 6).first()
-
-    print("kfdhjkdshfjkdsjfl;dsjlfjdslfjsld")
-    print(person_replying)
-    print(responses)
+    responses = Response.query.options(db.joinedload('user')).filter(Response.inquiry_id == inquiry_id).all()
     
-    print()
-    print("fkjshdjkfdsjkfhsd")
-
+    
     return render_template("view_report.html", inquiry=inquiry, 
-        user_id=user_id, responses=responses, user=user, person_replying=person_replying)
+        user_id=user_id, responses=responses)
 
 @app.route("/logout")
 def logout():
@@ -137,7 +126,8 @@ def handle_report():
     anonymous = request.form.get(bool("anonymous"))
     user_id = session["user_id"]
 
-    new_inquiry = Inquiry(user_id=user_id, todays_date=todays_date, location=location, witness=witness, inquiry_text=inquiry_text, anonymous=anonymous)
+    new_inquiry = Inquiry(user_id=user_id, todays_date=todays_date, location=location, 
+    incident_date=incident_date, witness=witness, inquiry_text=inquiry_text, anonymous=anonymous)
     
     db.session.add(new_inquiry)
     db.session.commit()
@@ -158,11 +148,6 @@ def list_users():
     else:
         return redirect("/")
 
-@app.route("/test")
-def test():
-    pass
-
-
 
 @app.route("/reply-form", methods=["POST"])
 def reply_form():
@@ -170,18 +155,18 @@ def reply_form():
 
     inquiry_id = request.form.get("inquiry_id")
     user_id = request.form.get("user_id")
-    person_replying = request.form.get("person_replying")
+    
     response_date = request.form.get("todays_date")
     responding_to = request.form.get("inquiry_id")
     response_text = request.form.get("response_text")
-    
+
     new_response = Response(inquiry_id=inquiry_id, user_id=user_id, response_date=response_date,
-        responding_to=responding_to, response_text=response_text, person_replying=person_replying)
+        responding_to=responding_to, response_text=response_text)
 
     db.session.add(new_response)
     db.session.commit()
 
-    return render_template("view_report.html", person_replying=person_replying)
+    return redirect(f"/inquiry/{inquiry_id}")
 
 
 

@@ -64,8 +64,7 @@ class Response(db.Model):
 
     response_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     inquiry_id = db.Column(db.Integer, db.ForeignKey('inquiries.inquiry_id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    person_replying = db.Column(db.Integer, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False) #change this to person replying
     response_date = db.Column(db.TIMESTAMP(timezone=True), nullable=False)
     responding_to = db.Column(db.Integer, nullable=False)
     response_text = db.Column(db.String(1000000), nullable=False)

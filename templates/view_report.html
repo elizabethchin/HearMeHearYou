@@ -24,7 +24,7 @@
     <h1> Replies: </h1>
     
     {% for response in responses %}
-        <li>{{ user.first_name }} {{ user.last_name }} - {{ response.response_date }}: {{ response.response_text }}</li></ul></br>
+        <li>{{ response.user.first_name }} {{ response.user.last_name }} - {{ response.response_date }}: {{ response.response_text }}</li></ul></br>
 
     {% endfor %}
     
@@ -34,15 +34,14 @@
 
 
 <div> 
-    {% if user_id == 6 %}
     
     <h1>Response Form</h1>
 
     <form action="/reply-form" method="POST">
     
     <div>
-        Person Replying:<input name="person_replying" value={{ user_id }}><br>
-        Replying to User ID#<input name="user_id" value="{{ inquiry.user_id }}"><br>
+        
+        User ID in session<input name="user_id" value="{{ user_id }}"><br>
         Replying to Inquiry ID#<input name="inquiry_id" value="{{ inquiry.inquiry_id }}"><br>
         Responding to thread # <input name="responding_to" value="{{ inquiry.inquiry_id }}"><br>
         Today's Date:
@@ -62,7 +61,6 @@
     
     </form>
         
-    {% endif %} 
 </div>
 
 

@@ -158,6 +158,10 @@ def list_users():
     else:
         return redirect("/")
 
+@app.route("/test")
+def test():
+    pass
+
 
 
 @app.route("/reply-form", methods=["POST"])
@@ -178,6 +182,7 @@ def reply_form():
     db.session.commit()
 
     return render_template("view_report.html", person_replying=person_replying)
+
 
 
 

@@ -23,7 +23,7 @@
         </ul>
     {% endif %}
 
-    {% if user.inquiries %}
+    {% if user.inquiries and session["user_id"] != 6%}
 
         <h2>Archive - View Saved Inquiries</h2>
         <ul>

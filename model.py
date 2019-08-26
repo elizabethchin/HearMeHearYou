@@ -47,6 +47,7 @@ class Inquiry(db.Model):
     witness = db.Column(db.String(100), nullable=True)
     inquiry_text = db.Column(db.String(1000000), nullable=False)
     anonymous = db.Column(db.Boolean, default=True)
+    archive = db.Column(db.Boolean)
 
     user = db.relationship('User')
     responses = db.relationship("Response")
@@ -55,7 +56,7 @@ class Inquiry(db.Model):
         """Provide helpful representation when printed."""
         return """<Inquiry: inquiry_id={} user_id={} todays_date={} incident_date={}
                 location={} witness={} incident_text={} anonymous={}>""".format(self.inquiry_id, self.user_id, self.todays_date, 
-                self.incident_date, self.location, self.witness, self.inquiry_text, self.anonymous)
+                self.incident_date, self.location, self.witness, self.inquiry_text, self.anonymous, self.archive)
 
 class Response(db.Model):
     """List of responses to inquiries."""

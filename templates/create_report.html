@@ -8,7 +8,7 @@
 
 <form action="/handle-report" method="POST">
 
-    <div class="div">
+    <div class="handle-report">
 
         <label>Today's Date: </label>
         <input type="date" name="todays_date" placeholder="today's date"><br>
@@ -33,9 +33,11 @@
         <label>Anonymous:  </label>
         <input type="radio" name="anonymous" value="true" id="anonymous"> True 
         <input type="radio" name="anonymous" value="false" id="anonymous"> False <br>
-        <button>Submit to HearMe</button>
+        <button>Submit to HearMe</button><br>
+        <input type="submit" formaction="/save-report" name="action" value="Save" />
     </div>
     
 </form>
+
 
 {% endblock %}

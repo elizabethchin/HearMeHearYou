@@ -116,7 +116,7 @@ def create_report():
 
 @app.route("/handle-report", methods=["POST"])
 def handle_report():
-    """Get information from report user created"""
+    """Submit report to HearMe."""
     
     todays_date = request.form.get("todays_date")
     incident_date = request.form.get("incident_date")
@@ -125,9 +125,10 @@ def handle_report():
     inquiry_text = request.form.get("inquiry_text")
     anonymous = request.form.get(bool("anonymous"))
     user_id = session["user_id"]
+    archive = False
 
     new_inquiry = Inquiry(user_id=user_id, todays_date=todays_date, location=location, 
-    incident_date=incident_date, witness=witness, inquiry_text=inquiry_text, anonymous=anonymous)
+    incident_date=incident_date, witness=witness, inquiry_text=inquiry_text, anonymous=anonymous, archive=archive)
     
     db.session.add(new_inquiry)
     db.session.commit()
@@ -136,6 +137,30 @@ def handle_report():
 
     return redirect(f"/user/{user_id}")
 
+
+@app.route("/save-report", methods=["POST"])
+def save_report():
+    """Save report to archive."""
+    
+    todays_date = request.form.get("todays_date")
+    incident_date = request.form.get("incident_date")
+    location = request.form.get("location")
+    witness = request.form.get("witness")
+    inquiry_text = request.form.get("inquiry_text")
+    anonymous = request.form.get(bool("anonymous"))
+    user_id = session["user_id"]
+    archive = True
+
+    new_inquiry = Inquiry(user_id=user_id, todays_date=todays_date, location=location, 
+    incident_date=incident_date, witness=witness, inquiry_text=inquiry_text, anonymous=anonymous, archive=archive)
+    
+  
+    db.session.add(new_inquiry)
+    db.session.commit()
+
+    flash("Saved Inquiry")
+
+    return redirect(f"/user/{user_id}")
 
 @app.route("/user_list")
 def list_users():

@@ -2,6 +2,16 @@
 
 from flask_sqlalchemy import SQLAlchemy
 
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+from sqlalchemy_utils import EncryptedType
+from sqlalchemy_utils.types.encrypted.encrypted_type import AesEngine
+
+secret_key = "mykey123"
+
+
 
 
 # This is the connection to the PostgreSQL database; we're getting this through
@@ -45,7 +55,7 @@ class Inquiry(db.Model):
     incident_date = db.Column(db.TIMESTAMP(timezone=True), nullable=True)
     location = db.Column(db.String(100), nullable=True)
     witness = db.Column(db.String(100), nullable=True)
-    inquiry_text = db.Column(db.String(1000000), nullable=False)
+    inquiry_text = db.Column(EncryptedType(db.String(1000000), secret_key, AesEngine, "pkcs5"))
     anonymous = db.Column(db.Boolean, default=True)
     archive = db.Column(db.Boolean)
 
@@ -68,7 +78,7 @@ class Response(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False) #change this to person replying
     response_date = db.Column(db.TIMESTAMP(timezone=True), nullable=False)
     responding_to = db.Column(db.Integer, nullable=False)
-    response_text = db.Column(db.String(1000000), nullable=False)
+    response_text = db.Column(EncryptedType(db.String(1000000), secret_key, AesEngine, "pkcs5"))
 
     user = db.relationship('User')
     inquiries = db.relationship('Inquiry')

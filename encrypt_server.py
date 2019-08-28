@@ -6,6 +6,13 @@ from flask import Flask, render_template, redirect, request, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import connect_to_db, db, User, Inquiry, Response
+from secret import keys 
+
+from cryptography.fernet import Fernet
+
+key = Fernet.generate_key()
+
+
 
 app = Flask(__name__)
 

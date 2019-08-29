@@ -9,7 +9,9 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import EncryptedType
 from sqlalchemy_utils.types.encrypted.encrypted_type import AesEngine
 
-secret_key = "mykey123"
+from secret import keys
+
+# secret_key = "mykey123"
 
 
 
@@ -55,7 +57,7 @@ class Inquiry(db.Model):
     incident_date = db.Column(db.TIMESTAMP(timezone=True), nullable=True)
     location = db.Column(db.String(100), nullable=True)
     witness = db.Column(db.String(100), nullable=True)
-    inquiry_text = db.Column(EncryptedType(db.String(1000000), secret_key, AesEngine, "pkcs5"))
+    inquiry_text = db.Column(EncryptedType(db.String(1000000), keys["db_key"], AesEngine, "pkcs5"))
     anonymous = db.Column(db.Boolean, default=True)
     archive = db.Column(db.Boolean)
 
@@ -78,7 +80,7 @@ class Response(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False) #change this to person replying
     response_date = db.Column(db.TIMESTAMP(timezone=True), nullable=False)
     responding_to = db.Column(db.Integer, nullable=False)
-    response_text = db.Column(EncryptedType(db.String(1000000), secret_key, AesEngine, "pkcs5"))
+    response_text = db.Column(EncryptedType(db.String(1000000), keys["db_key"], AesEngine, "pkcs5"))
 
     user = db.relationship('User')
     inquiries = db.relationship('Inquiry')

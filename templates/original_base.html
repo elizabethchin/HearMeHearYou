@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+
+	<!-- Load React dependencies on all pages for this app. -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+	<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+	<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+	<!-- {% block js %}
+	<script src="static/app.jsx" type="text/jsx"></script>
+	<div id="root"></div>
+	{% endblock %} -->
+	
+	<script src="https://maps.googleapis.com/maps/api/js?key=google_map_api&callback=CALLBACK"></script>
+
+</head>    
+<body>
+	
+	<!-- can't put flash messages inside block content -->
+
+	{% if "user_id" in session %}
+		<a href="/logout">Logout</a>
+		<a href="/user/{{ session['user_id'] }}">Homepage</a>
+	{% endif %}
+	
+	<hr>
+	
+	<ul>
+		{% for message in get_flashed_messages() %}
+			<li>{{ message }}</li>
+		{% endfor %}
+	</ul>
+	
+	
+	{% block content %}
+	{% endblock %}
+
+
+</body>
+</html>

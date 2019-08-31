@@ -1,0 +1,74 @@
+.div { 
+    display: inline-block;
+    padding: 10px;
+    width: 1000px;
+}
+
+body {
+    background-color: #F4F4F4;
+    background-image: url("/static/img/HearMe.jpg");
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    top: 1200px;
+
+    
+}
+
+.display-3 {
+    color: #373737;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.statement {
+    color: #c0b283;
+}
+
+.jumbotron {
+    
+  
+    /* Full height */
+    height: 100vh; 
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+
+#border {
+    border-style: solid;
+    border-width: 5px;
+    border-color: green;
+}
+
+h1 {
+    color: black;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+
+}
+.btn-primary {
+    background-color: #c60063;
+    border-color: #c60063;
+}

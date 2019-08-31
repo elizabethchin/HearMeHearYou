@@ -1,1 +1,0 @@
-/home/user/src/Project/templates/js/app.jsx

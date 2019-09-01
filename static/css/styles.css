@@ -9,17 +9,18 @@ body {
     background-image: url("/static/img/HearMe.jpg");
 
     /* Full height */
-    height: 100%; 
+    min-height: 100vh; 
 
     /* Center and scale the image nicely */
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    top: 1200px;
-
+    top: 1500px;
     
 }
+
+
 
 .display-3 {
     color: #373737;
@@ -29,7 +30,7 @@ body {
 
 .statement {
     color: #c0b283;
-}
+
 
 .jumbotron {
     

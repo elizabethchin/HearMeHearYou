@@ -11,6 +11,8 @@
 	<!-- Load Font Awesome -->
 	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bodini">
+
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/static/css/styles.css">
 
@@ -19,33 +21,64 @@
 
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #dcd0c0;">
-		<div class="container">
-			<a class="navbar-brand" href="/">HearMe</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" 
-			data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-			aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+	<div class="container">
+		<div class="row">
+			<div class="col-3">
+				<!-- Header ============================================ -->
+				<header class="clearfix">
+	
+					<div class="logo">
+						<a href="/"><img src="/static/img/HM_Logo.png" alt="HearMe Logo"></a>
+					</div>
+		
+					<a class="elemadded responsive-link" href="#">Menu</a>
+		
+					<nav class="nav-menu">
+						<ul class="menu-list">
+							<li><a class="active" href="index.html">Home</a></li>
+							<li><a href="about.html">About</a></li>
+							<li><a href="portfolio.html">Resources</a></li>
+							<li><a href="contact.html">Contact</a></li>
+							<li><a href="contact.html">Register</a></li>
+							<li><a href="contact.html">Login</a></li>
+						</ul>
+					</nav>
+		
+					<div class="social-box">
+						<ul class="social-icons">
+							<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a class="rss" href="#"><i class="fa fa-rss"></i></a></li>
+							<li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
+							<li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+						<p>Copyright ©HearMe 2019</p>
+			
+					</div>
+		
+				</header>
+			</div>
+			<div class="col-9" id="home">
+				<div class="landing-text">
+					<hi> Bootstrap</hi>
+					<h3>Learn basic building blocks.</h3>
+					<a href="#" class="btn btn-default btn-lg">Get Started</a>
+				</div>
+				<div id="block-content">
+					{% block content %}
+			
+					{% endblock %}
+				</div>
 				
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="/Login">Login
-							<span class="sr-only">(current)</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#services">About</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#footer">Resources</a>
-					</li>
-				</ul>
 			</div>
 		</div>
-	</nav>
+	</div>
+			
+	
 
+
+
+	<div id="login" style="background-color:transparent;padding:0px;"></div>
 	{% if "user_id" in session %}
 		<a href="/logout">Logout</a>
 		<a href="/user/{{ session['user_id'] }}">Homepage</a>
@@ -55,7 +88,6 @@
 
 	{% endif %}
 	
-	<hr>
 	
 	<ul>
 		{% for message in get_flashed_messages() %}
@@ -63,15 +95,7 @@
 		{% endfor %}
 	</ul>
 
-	{% block content %}
-
-	{% endblock %}
-
-	<footer id="footer">
-		<div class="container">
-			<p class="text-center">Copyright &copy; HearMe 2019</p>
-		</div>
-	</footer>
+	
 
 
 	<script src="scripts/jquery.min.js"></script>

@@ -1,0 +1,103 @@
+@font-face {
+    font-family: myFont;
+    src: url(BodoniXT.ttf);
+}
+
+
+.div { 
+    display: inline-block;
+    padding: 10px;
+    width: 1000px;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+
+  
+    
+    
+    font-family: myFont;
+    src: url(BodoniXT.ttf);
+    /* Full height */
+    min-height: 100vh; 
+
+   
+}
+
+.navbar {
+    background-color: #dcd0c0;
+    padding: 1% 0;
+    font-size: 1em;
+}
+
+
+.navbar-default .navbar-nav li a {
+    color: #373737;
+}
+
+.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a.active {
+    color: #F4F4F4;
+}
+
+#home{
+    background-image: url("/static/img/HearMe.jpg");
+    position: fixed;
+ 	display: table;
+ 	top: 0;
+ 	left: 0;
+ 	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center center;
+	-webkit-transform: translateZ(0);
+          transform: translateZ(0);
+	will-change: transform;
+	z-index: -1;
+}
+
+.landing-text{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.img {
+    position: absolute;
+    
+    top: #distance from top of page#
+    left: #distance from left of page#
+    }
+
+#login {
+    display: inline-block;
+}
+
+#block-content {
+    padding: 80px;
+    margin: 80px;
+    display: inline;
+}
+
+.display-3 {
+    color: #373737;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.statement {
+    color: #c0b283;
+
+
+
+#border {
+    border-style: solid;
+    border-width: 5px;
+    border-color: green;
+}
+
+h1 {
+    color: black;
+    font-family: sans-serif;
+    text-align: center;
+}

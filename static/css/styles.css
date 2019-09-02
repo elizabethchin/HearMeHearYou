@@ -50,7 +50,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background: #ffffff;
+    background: #f4f4f4;
     min-height: 100%;
     z-index: 99999;
     display: flex;
@@ -66,7 +66,7 @@
         position: relative; }
         header nav.nav-menu ul.menu-list li a {
           padding: 8px 0;
-          color: #666666;
+          color: #373737;
           font-size: 12px;
           font-family: "Poppins", sans-serif;
           text-transform: uppercase;
@@ -95,7 +95,7 @@
       text-align: left;
       padding: 0 40px; }
       header .social-box p {
-        color: #999999; }
+        color: #373737; }
       header .social-box ul.social-icons {
         margin-bottom: 20px; }
         header .social-box ul.social-icons li {
@@ -131,7 +131,7 @@
   
   a.elemadded {
     display: none;
-    color: #666666;
+    color: #373737;
     font-size: 13px;
     font-family: "Poppins", sans-serif;
     text-transform: uppercase;

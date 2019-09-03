@@ -66,6 +66,7 @@
 				{% endfor %}
 			</ul>
 		</div>
+		{% if "user_id" not in session %}
 		<div id="block-content">
             <h1>Welcome to HearMe</h1>
             <form action="/login" method="POST">
@@ -85,6 +86,7 @@
                 </div>
             </form>
 		</div>
+		{% endif %}
 	</div>
 
 	<div class="padding">

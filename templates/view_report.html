@@ -41,12 +41,12 @@
     
     <div>
         <!-- User ID in session -->
-        <type="hidden" input name="user_id" value="{{ user_id }}"><br>
+        <input name="user_id" value="{{ user_id }}"><br>
 
         <!-- Replying to Inquiry ID# -->
-        <type="hidden" input name="inquiry_id" value="{{ inquiry.inquiry_id }}"><br>
+        <input name="inquiry_id" value="{{ inquiry.inquiry_id }}"><br>
         <!-- Responding to thread #  -->
-        <type="hidden" input name="responding_to" value="{{ inquiry.inquiry_id }}"><br>
+        <input name="responding_to" value="{{ inquiry.inquiry_id }}"><br>
         Today's Date:
         <input type="date" name="todays_date" placeholder="today's date"><br>
     

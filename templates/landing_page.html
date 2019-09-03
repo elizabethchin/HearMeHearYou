@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bodini">
 
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="/static/css/landing_page.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/styles.css">
 
 </head>    
 
@@ -22,81 +22,173 @@
 
 <body>
 	<nav id=navbar class="navbar navbar-expand-lg navbar-light fixed-top">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="/">HearMe</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" 
-			data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+		<div class="container-fluid ">
+			<a class="navbar-brand" href="/"><img src="/static/img/HM_Logo.png"></a>
+			<button type="button"class="navbar-toggler"  data-toggle="collapse" 
+			data-target="#navbar-collapse-main" aria-controls="navbar-collapse-main" 
 			aria-expanded="false" aria-label="Toggle navigation">
-				<span class="sr-only">Toggle navigation</span>
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<a class="navbar-brand" href="#"></a>
-			
 				
 			<div class="collapse navbar-collapse" id="navbar-collapse-main">
-				<ul class="navbar-nav ml-auto">
-					<li class="login-container">
-						<form action="/action_page.php">
-							<input type="text" placeholder="Username" name="username">
-							<input type="text" placeholder="Password" name="psw">
-							<button type="submit">Login</button>
-						</form>
+				<ul class="navbar-nav ml-auto">				
+
+				{% if "user_id" in session %}
+					<li class="nav-item active">
+						<a class="nav-link" href="/logout">Logout
+							<span class="sr-only">(current)</span>
+						</a>
 					</li>
-					<li><a class="active" href="#">Login</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#footer">Resources</a></li>
-					<li><a href="#footer">Contact</a></li>
+					<li class="nav-item">
+						<a class="nav-link" href="/user/{{ session['user_id'] }}">Homepage</a>
+					</li>
+				{% endif %}
+					<li class="nav-item">
+						<a class="nav-link" href="#About">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#footer">Resources</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#footer">Contact</a>
+					</li>
 				</ul>
 			</div>
+	
 		</div>
 	</nav>
 
-		<!--fixed background-->
-	<div id="fixed">
-	</div>
-
-
-	
 	<div id="home">
 		<div class="landing-text">
-			<hi> Bootstrap</hi>
-			<h3>Learn basic building blocks.</h3>
-			<a href="#" class="btn btn-default btn-lg">Get Started</a>
+			<ul>
+				{% for message in get_flashed_messages() %}
+					<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div id="block-content">
+            <h1>Welcome to HearMe</h1>
+            <form action="/login" method="POST">
+                <div class="login">
+                    <label>Email</label>
+                    <input type="text" name="email" placeholder="email" required><br>
+            
+                    <label>Password </label>
+                    <input type="text" name="password" placeholder="password" required><br>
+                    <button>Login</button><br>
+                </div>
+            </form>
+            
+            <form action="/register">
+                <div class="register">
+                    <button>Register</button>
+                </div>
+            </form>
 		</div>
 	</div>
 
-	<div id="login" style="background-color:transparent;padding:0px;"></div>
-	{% if "user_id" in session %}
-		<a href="/logout">Logout</a>
-		<a href="/user/{{ session['user_id'] }}">Homepage</a>
-		{% else %}
-		<a href="/login">Login</a>
+	<div class="padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<h4>Built With Sass</h4>
+					<p>Place holder text. Place Holder Text.</p>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<h4>Built With Sass</h4>
+					<p>Place holder text. Place Holder Text.</p>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<h4>Built With Sass</h4>
+					<p>Place holder text. Place Holder Text.</p>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<img src="/static/img/HM_Logo.png" class="img-responisive">
+				</div>
+			</div>
+		</div>
+	</div>
 
-
-	{% endif %}
-	
-	
-	<ul>
-		{% for message in get_flashed_messages() %}
-			<li>{{ message }}</li>
-		{% endfor %}
-	</ul>
-
-	<div id="block-content">
-		{% block content %}
-
-		{% endblock %}
+	<div id="fixed">
 
 	</div>
-	
 
-	
+	<div class="padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					<h4>Here's the cool thing about Bootstrap...</h4>
+					<p>Place holder text. Place Holder Text.Place holder text. Place Holder Text.
+						Place holder text. Place Holder Text.Place holder text. Place Holder Text.
+					</p>
+				</div>
+				<div class="col-sm-6">
+					<img src="/static/img/HM_Logo.png">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="padding">
+	<section id="services" class="container">
+			<h2 class="display-4 text-center mt-5 mb-3">Our Services</h2>
+			
+			<div class="row text-center">
+				<div class="col-md-4 mb-4">
+					<div class="card h-100">
+						<img class="card-img-top" src="design.jpg" alt="Design">
+						<div class="card-body">
+						<h4 class="card-title">Empower Employees</h4>
+						<p class="card-text">Give employees a safe space to address their concerns.</p>
+						</div>
+						<div class="card-footer py-4">
+						<a href="#" class="btn btn-secondary">See portfolio &raquo;</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-4 mb-4">
+					<div class="card h-100">
+						<img class="card-img-top" src="development.jpg" alt="Development">
+						<div class="card-body">
+						<h4 class="card-title">Development</h4>
+							<p class="card-text">You need software that works on every device. 
+							Leverage the latest technologies and the most powerful tools!</p>
+						</div>
+						<div class="card-footer py-4">
+						<a href="#" class="btn btn-secondary">See projects &raquo;</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-md-4 mb-4">
+					<div class="card h-100">
+						<img class="card-img-top" src="analytics.jpg" alt="Analytics">
+						<div class="card-body">
+						<h4 class="card-title">Analytics</h4>
+						<p class="card-text">Consult our experts to set up proper goals and 
+						find the best stack for your next application!</p>
+						</div>
+						<div class="card-footer py-4">
+						<a href="#" class="btn btn-secondary">See testimonials &raquo;</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
 
 	<footer id="footer">
-		<div class="container-fluid text-center ">
+		<div class="container">
 			<p class="text-center">Copyright &copy; HearMe 2019</p>
 		</div>
 	</footer>
+
+		
+
+
+	
 
 
 	<script src="scripts/jquery.min.js"></script>

@@ -21,79 +21,68 @@
 
 
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-3"></div>
-				<!-- Header ============================================ -->
-				<header class="clearfix">
-	
-					<div class="logo">
-						<a href="/"><img src="/static/img/HM_Logo.png" alt="HearMe Logo"></a>
-					</div>
-		
-					<a class="elemadded responsive-link" href="#">Menu</a>
-		
-					<nav class="nav-menu">
-						<ul class="menu-list">
-							<li><a class="active" href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="portfolio.html">Resources</a></li>
-							<li><a href="contact.html">Contact</a></li>
-							<li><a href="contact.html">Register</a></li>
-							<li><a href="contact.html">Login</a></li>
-						</ul>
-					</nav>
-		
-					<div class="social-box">
-						<ul class="social-icons">
-							<li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a class="rss" href="#"><i class="fa fa-rss"></i></a></li>
-							<li><a class="google" href="#"><i class="fa fa-google-plus"></i></a></li>
-							<li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-						</ul>
-						<p>Copyright ©HearMe 2019</p>
-			
-					</div>
-		
-				</header>
-			</div>
-			<div class="col-9" id="home">
-				<div class="landing-text">
-					<hi> Bootstrap</hi>
-					<h3>Learn basic building blocks.</h3>
-					<a href="#" class="btn btn-default btn-lg">Get Started</a>
-				</div>
-				<div id="block-content">
-					{% block content %}
-			
-					{% endblock %}
-				</div>
+	<nav id=navbar class="navbar navbar-expand-lg navbar-light fixed-top">
+		<div class="container-fluid ">
+			<a class="navbar-brand" href="/"><img src="/static/img/HM_Logo.png"></a>
+			<button type="button"class="navbar-toggler"  data-toggle="collapse" 
+			data-target="#navbar-collapse-main" aria-controls="navbar-collapse-main" 
+			aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 				
+			<div class="collapse navbar-collapse" id="navbar-collapse-main">
+				<ul class="navbar-nav ml-auto">				
+
+				{% if "user_id" in session %}
+					<li class="nav-item active">
+						<a class="nav-link" href="/logout">Logout
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/user/{{ session['user_id'] }}">Homepage</a>
+					</li>
+				{% endif %}
+					<li class="nav-item">
+						<a class="nav-link" href="#About">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#footer">Resources</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#footer">Contact</a>
+					</li>
+				</ul>
 			</div>
+	
+		</div>
+	</nav>
+
+	<div id="blank-page">
+		<div class="landing-text">
+			<ul>
+				{% for message in get_flashed_messages() %}
+					<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div id="block-content">
+
+			{% block content %}
+
+			{% endblock %}
 		</div>
 	</div>
-			
-	
 
 
+	<footer id="footer">
+		<div class="container">
+			<p class="text-center">Copyright &copy; HearMe 2019</p>
+		</div>
+	</footer>
 
-	<div id="login" style="background-color:transparent;padding:0px;"></div>
-	{% if "user_id" in session %}
-		<a href="/logout">Logout</a>
-		<a href="/user/{{ session['user_id'] }}">Homepage</a>
-		{% else %}
-		<a href="/login">Login</a>
+		
 
-
-	{% endif %}
-	
-	
-	<ul>
-		{% for message in get_flashed_messages() %}
-			<li>{{ message }}</li>
-		{% endfor %}
-	</ul>
 
 	
 

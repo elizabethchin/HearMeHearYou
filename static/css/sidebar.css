@@ -1,0 +1,181 @@
+@font-face {
+    font-family: myFont;
+    src: url(BodoniXT.ttf);
+}
+
+
+.div { 
+    display: inline-block;
+    padding: 10px;
+    width: 1000px;
+}
+
+#home {
+    background: url("/static/img/HearMe.jpg") ;
+    display: table;
+    height: 100%;
+    position: relative;
+    width: calc(100% - 17rem);
+    
+
+    font-family: myFont;
+    src: url(BodoniXT.ttf);
+    /* Full height */
+    min-height: 100vh; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.landing-text {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    color: #f4f4f4;
+}
+
+.vertical-nav {
+    min-width: 17rem;
+    width: 17rem;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s;
+  }
+
+  #sidebar.active {
+    margin-left: -17rem;
+  }
+  
+  header {
+   min-width: 17rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #373737;
+    min-height: 100%;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; }
+    header .logo {
+      padding: 0 85px; }
+    header nav.nav-menu {
+      padding: 30px 40px;
+      width: 100%; }
+      header nav.nav-menu ul.menu-list li {
+        display: block;
+        position: relative; }
+        header nav.nav-menu ul.menu-list li a {
+          padding: 8px 0;
+          color: #f4f4f4;
+          font-size: 12px;
+          font-family: "Poppins", sans-serif;
+          text-transform: uppercase;
+          font-weight: 600; }
+        header nav.nav-menu ul.menu-list li a:before {
+          display: inline-block;
+          float: left;
+          content: '';
+          width: 0;
+          height: 1px;
+          margin-right: 0;
+          margin-top: 8px;
+          transition: all 0.3s ease-in-out;
+          -moz-transition: all 0.3s ease-in-out;
+          -webkit-transition: all 0.3s ease-in-out;
+          -o-transition: all 0.3s ease-in-out;
+          background: #c0b283; }
+        header nav.nav-menu ul.menu-list li a.active,
+        header nav.nav-menu ul.menu-list li a:hover {
+          color: #c0b283; }
+        header nav.nav-menu ul.menu-list li a.active:before,
+        header nav.nav-menu ul.menu-list li a:hover:before {
+          width: 60px;
+          margin-right: 20px; }
+    header .social-box {
+      text-align: left;
+      padding: 0 40px; }
+      header .social-box p {
+        color: #f4f4f4; }
+      header .social-box ul.social-icons {
+        margin-bottom: 20px; }
+        header .social-box ul.social-icons li {
+          display: inline-block;
+          margin-right: 5px; }
+          header .social-box ul.social-icons li a {
+            color: #555555;
+            font-size: 14px;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #f0f0f0;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            border-radius: 50%;
+            line-height: 36px;
+            text-align: center; }
+          header .social-box ul.social-icons li a:hover {
+            color: #fff;
+            background: #c7ad88;
+            border-color: transparent; }
+        header .social-box ul.social-icons li:last-child {
+          margin-right: 0; }
+  
+  header:after {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 60px;
+    height: 1px;
+    background: #c7ad88; }
+  
+  a.elemadded {
+    display: none;
+    color: #373737;
+    font-size: 13px;
+    font-family: "Poppins", sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    padding: 15px 0;
+    text-align: center;
+    text-decoration: none;
+    border-bottom: 1px solid #f1f1f1f1;
+    border-top: 1px solid #f1f1f1f1;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out; }
+
+.img {
+    position: absolute;
+    
+    top: #distance from top of page#
+    left: #distance from left of page#
+    }
+
+#login {
+    display: inline-block;
+}
+
+#block-content {
+    padding: 80px;
+    margin: 80px;
+    display: inline;
+}
+
+.display-3 {
+    color: #373737;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.statement {
+    color: #c0b283;
+}

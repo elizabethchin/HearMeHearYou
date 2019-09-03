@@ -16,10 +16,10 @@ app.secret_key = "ABC"
 #Routes
 
 @app.route("/")
-def homepage():
-    """Returns Homepage with login."""
+def landing_page():
+    """Returns landing page with login."""
     
-    return render_template("homepage.html")
+    return render_template("landing_page.html")
 
 
 @app.route("/login", methods=["POST"])

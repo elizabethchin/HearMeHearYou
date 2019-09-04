@@ -6,16 +6,16 @@
 
 
 <div id="inquiry_report">
-    <h1>
+    <h3>
         Incident:
-    </h1>
+    </h3>
 
-    <h3> Today's date:{{ inquiry.todays_date }}</h3></br>
-    <h3> Incident date:{{ inquiry.incident_date }}</h3></br>
-    <h3> Location:{{ inquiry.location }}</h3></br>
-    <h3> Witness:{{ inquiry.witness }}</h3></br>
-    <h3> Inquiry Text:{{ inquiry.inquiry_text }}</h3></br>
-    <h3> Anonymous:{{ inquiry.anonymous }}</h3></br>
+    <h5> Today's date:{{ inquiry.todays_date }}</h5></br>
+    <h5> Incident date:{{ inquiry.incident_date }}</h5></br>
+    <h5> Location:{{ inquiry.location }}</h5></br>
+    <h5> Witness:{{ inquiry.witness }}</h5></br>
+    <h5> Inquiry Text:{{ inquiry.inquiry_text }}</h5></br>
+    <h5> Anonymous:{{ inquiry.anonymous }}</h5></br>
 
 </div>
 
@@ -35,11 +35,12 @@
 
 <div> 
     
-    <h1>Response Form</h1>
+    
 
     <form action="/reply-form" method="POST">
-    
-    <div>
+
+    <div id="view-report">
+        <h1>Response Form</h1>
         <!-- User ID in session -->
         <input name="user_id" value="{{ user_id }}"><br>
 

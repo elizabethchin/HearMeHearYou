@@ -59,16 +59,13 @@
 	</nav>
 
 	<div id="home">
-		<div class="landing-text">
-			<ul>
+		<div id="flash-message">
 				{% for message in get_flashed_messages() %}
-					<li>{{ message }}</li>
+					{{ message }}
 				{% endfor %}
-			</ul>
 		</div>
 		{% if "user_id" not in session %}
 		<div id="block-content">
-            <h1>Welcome to HearMe</h1>
             <form action="/login" method="POST">
                 <div class="login">
                     <label>Email</label>

@@ -4,11 +4,12 @@
 
 {% block content %}
 
-<h1>Incident Report</h1>
+
 
 <form action="/handle-report" method="POST">
 
-    <div class="handle-report">
+    <div id="handle-report">
+        <h3>Incident Report</h3>
 
         <label>Today's Date: </label>
         <input type="date" name="todays_date" placeholder="today's date"><br>

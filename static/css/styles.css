@@ -7,8 +7,35 @@
     display: inline-block;
     padding: 10px;
     width: 1000px;
-    font-family: myFont;
-    src: url(BodoniXT.ttf);
+}
+
+#handle-report {
+    padding: 50px;
+    font-size: 14px;
+}
+
+#inquiry_report {
+    padding: 50px;
+    font-size: 14px;
+}
+
+#reply-form {
+    padding: 50px;
+    font-size: 14px;
+}
+
+#create-report {
+    padding: 50px;
+    font-size: 14px;
+}
+
+#view-report {
+    font-size: small;
+}
+
+#block-content {
+    padding: 100px;
+    font-size: 14px;
 }
 
 html, body {
@@ -33,13 +60,29 @@ html, body {
     padding: 1% 0;
     font-size: 1.2em;
     margin-bottom: 0px;
+    background-color: #373737;
+}
+
+#flash-message {
+    padding: 150px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #c0b283;
+}
+
+.navbar-light .navbar-nav .active>.nav-link {
+    color: #c0b283;
+}
+
+.nav-link{
+    color: #f4f4f4;
 }
 
 .navbar-brand{
     min-height: 55px;
     padding: 0 15px 5px; 
 }
-
 
 
 #home{
@@ -51,6 +94,8 @@ html, body {
     background-size: cover;
     padding-top: 70px;
     bottom: 1000px;
+    background-size: 50%;
+    background-color: rgb(234,234,235);
 }
 
 #blank-page{

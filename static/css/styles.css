@@ -86,7 +86,7 @@ html, body {
 
 
 #home{
-    background: url("/static/img/cropped_bottom.jpg") no-repeat center center fixed;
+    background: url("/static/img/HearMe.jpg") no-repeat center center fixed;
     display: table;
     height: 100%;
     position: bottom;
@@ -94,7 +94,7 @@ html, body {
     background-size: cover;
     padding-top: 70px;
     bottom: 1000px;
-    background-size: 50%;
+    background-size: 70%;
     background-color: rgb(234,234,235);
 }
 
@@ -117,15 +117,24 @@ html, body {
 }
 
 .padding {
-    padding: 80px 0;
+    padding: 40px 0;
 }
 
 .padding img {
+    width: 50%;
+}
+
+#fixed-also {
+    background: url("/static/img/document.jpg") no-repeat center center fixed;
+    display: table;
+    height: 60%;
+    position: relative;
     width: 100%;
+    background-size: cover;
 }
 
 #fixed {
-    background: url("/static/img/document.jpg") no-repeat center center fixed;
+    background: url("/static/img/office_space.jpg") no-repeat center center fixed;
     display: table;
     height: 60%;
     position: relative;

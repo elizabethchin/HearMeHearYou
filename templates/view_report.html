@@ -42,12 +42,12 @@
     <div id="view-report">
         <h1>Response Form</h1>
         <!-- User ID in session -->
-        <input name="user_id" value="{{ user_id }}"><br>
+        <input style="display:none" name="user_id" value="{{ user_id }}"><br>
 
         <!-- Replying to Inquiry ID# -->
-        <input name="inquiry_id" value="{{ inquiry.inquiry_id }}"><br>
+        <input style="display:none" name="inquiry_id" value="{{ inquiry.inquiry_id }}"><br>
         <!-- Responding to thread #  -->
-        <input name="responding_to" value="{{ inquiry.inquiry_id }}"><br>
+        <input style="display:none" name="responding_to" value="{{ inquiry.inquiry_id }}"><br>
         Today's Date:
         <input type="date" name="todays_date" placeholder="today's date"><br>
     

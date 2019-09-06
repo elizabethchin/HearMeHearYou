@@ -86,7 +86,7 @@ html, body {
 
 
 #home{
-    background: url("/static/img/HearMe.jpg") no-repeat center center fixed;
+    background: url("/static/img/hmhy_landingpage.png") no-repeat center center fixed;
     display: table;
     height: 100%;
     position: bottom;
@@ -94,7 +94,7 @@ html, body {
     background-size: cover;
     padding-top: 70px;
     bottom: 1000px;
-    background-size: 70%;
+    background-size: 60%;
     background-color: rgb(234,234,235);
 }
 
@@ -142,4 +142,12 @@ html, body {
     background-size: cover;
 }
 
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 40px;
+}
 

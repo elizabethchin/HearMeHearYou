@@ -17,10 +17,15 @@ app.secret_key = "ABC"
 
 @app.route("/")
 def landing_page():
-    """Returns landing page with login."""
+    """Returns landing page."""
     
     return render_template("landing_page.html")
 
+@app.route("/login_page")
+def login_page():
+    """Renders login page."""
+
+    return render_template("login_page.html")
 
 @app.route("/login", methods=["POST"])
 def process_login():

@@ -67,26 +67,7 @@
 					{{ message }}
 				{% endfor %}
 		</div>
-		{% if "user_id" not in session %}
-		<div id="block-content">
-            <form action="/login" method="POST">
-                <div class="login">
-                    <label>Email</label>
-                    <input type="text" name="email" placeholder="email" required><br>
-            
-                    <label>Password </label>
-                    <input type="text" name="password" placeholder="password" required><br>
-                    <button>Login</button><br>
-                </div>
-            </form>
-            
-            <form action="/register">
-                <div class="register">
-                    <button>Register</button>
-                </div>
-            </form>
-		</div>
-		{% endif %}
+		
 	</div>
 
 	<div class="padding">

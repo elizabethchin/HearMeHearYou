@@ -2,24 +2,31 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
-    <title>Login Form Design</title>
+    <title>Login Form</title>
     
     <body id="login">
+        <div id="flash-message">
+                {% for message in get_flashed_messages() %}
+                    {{ message }}
+                {% endfor %}
+        </div>
         <div class="loginbox">
             <img src="/static/img/200logo.png" class="avatar">
             <h1> Login Here</h1>
-            <form>
+            <form action="/login" method="POST">
                 <p>Email</p>
-                <input type="text" name="" placeholder="Enter Email">
+                <input type="text" name="email" placeholder="Enter Email" required>
                 <p>Password</p>
-                <input type="password" name="" placeholder="Enter Password">
+                <input type="password" name="password" placeholder="Enter Password" required>
                 <input type="submit" name="" value="Login"><br>
-                <a href="#"> Don't have an account?</a>
             </form>
+            <form action="/register">
+                <a href="/register"> Don't have an account?</a>
+            </form>
+
         </div>
 
     </body>
-
 
 </head>
 </html>

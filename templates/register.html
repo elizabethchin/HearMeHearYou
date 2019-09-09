@@ -1,26 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <title>Registration</title>
 
-{% extends 'base.html'%}
-{% block title %}Incident Report{% endblock %}
-
-{% block content %}
-
-<h1>Register for HearMe</h1>
-
-<form action="/register" method="POST">
-
-<div class="registration_form">
-
-    <label>First Name: </label>
-    <input type="text" name="fname" placeholder="First Name" required><br>
-    <label>Last Name: </label>
-    <input type="text" name="lname" placeholder="Last Name" required><br>
-    <label>Email: </label>
-    <input type="email" name="email" placeholder="Email" required><br>
-    <label>Password: </label>
-    <input type="password" name="password" placeholder="password" required><br>
-    <button>Submit</button>
-</div>
-
+    <body id="login">
+        <div class="loginbox">
+            <img src="/static/img/200logo.png" class="avatar">
+            <h1> Register Here</h1>
+            <form action="/register" method="POST">
+                <p>First Name: </p>
+                <input type="text" name="fname" placeholder="First Name" required>
+                <p>Last Name: </p>
+                <input type="text" name="lname" placeholder="Last Name" required>
+                <p>Email: </p>
+                <input type="text" name="email" placeholder="Email" required>
+                <p>Password</p>
+                <input type="password" name="password" placeholder="Enter Password" required>
+                <input type="submit" name="" value="Register"><br>
+            </form>
+        </div>
 </form>
 
-{% endblock %}

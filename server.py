@@ -64,17 +64,6 @@ def user_detail(user_id):
    
     return render_template("user.html", user=user)
 
-
-@app.route("/anonymous_inquiries")
-def anonymous_inquiries():
-    """View anonymous inquiries."""
-
-    inquiries = Inquiry.query.filter_by(anonymous=True).all()
-    if session["user_id"] == 6:
-        return render_template("anonymous_inquiries.html", inquiries=inquiries)
-    else:
-        return redirect("/")
-
 @app.route("/inquiry/<int:inquiry_id>")
 def report_detail(inquiry_id):
     """Report details."""
@@ -119,8 +108,6 @@ def process_registration():
     flash(f"User {first_name} {last_name} added.")
 
     return redirect("/")
-
-
 
 @app.route("/create-report")
 def create_report():

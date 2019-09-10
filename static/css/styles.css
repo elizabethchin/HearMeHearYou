@@ -43,8 +43,7 @@ html, body {
     width: 100%;
     background-color: #F4F4F4;
     
-    font-family: myFont;
-    src: url(BodoniXT.ttf);
+    font-family: sans-serif;
     /* Full height */
     min-height: 100vh; 
 

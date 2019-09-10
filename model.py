@@ -58,7 +58,7 @@ class Inquiry(db.Model):
     location = db.Column(db.String(100), nullable=True)
     witness = db.Column(db.String(100), nullable=True)
     inquiry_text = db.Column(EncryptedType(db.String(1000000), keys["db_key"], AesEngine, "pkcs5"))
-    anonymous = db.Column(db.Boolean, default=True)
+    anonymous = db.Column(db.Boolean, default=False)
     archive = db.Column(db.Boolean)
 
     user = db.relationship('User')

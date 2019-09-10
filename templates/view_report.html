@@ -4,41 +4,26 @@
 
 {% block content %}
 
-
 <div id="inquiry_report">
-    <h3>
-        Incident:
-    </h3>
-
+    <h3> Incident:</h3>
     <h5> Today's date:{{ inquiry.todays_date }}</h5></br>
     <h5> Incident date:{{ inquiry.incident_date }}</h5></br>
     <h5> Location:{{ inquiry.location }}</h5></br>
     <h5> Witness:{{ inquiry.witness }}</h5></br>
     <h5> Inquiry Text:{{ inquiry.inquiry_text }}</h5></br>
     <h5> Anonymous:{{ inquiry.anonymous }}</h5></br>
-
 </div>
 
 <div>
-    
     <h1> Replies: </h1>
-    
     {% for response in responses %}
         <li>{{ response.user.first_name }} {{ response.user.last_name }} - {{ response.response_date }}: {{ response.response_text }}</li></ul></br>
-
     {% endfor %}
-    
-   
-
 </div>
 
 
 <div> 
-    
-    
-
     <form action="/reply-form" method="POST">
-
     <div id="view-report">
         <h1>Response Form</h1>
         <!-- User ID in session -->
@@ -50,23 +35,13 @@
         <input style="display:none" name="responding_to" value="{{ inquiry.inquiry_id }}"><br>
         Today's Date:
         <input type="date" name="todays_date" placeholder="today's date"><br>
-    
         <p>
         Reply:
-        <textarea type="text"
-                name="response_text"
-                id = "myTextArea"
-                rows = "15"
-                cols = "80"> </textarea><br>
+        <textarea type="text" name="response_text" id = "myTextArea" rows = "15" cols = "80"> </textarea><br>
         </p>
         <button>Submit Reply</button>
-
     </div>
-    
-    </form>
-        
+    </form>  
 </div>
-
-
 
 {% endblock %}

@@ -57,6 +57,7 @@ def load_inquiries():
                     inquiry_text=inquiry_text,
                     anonymous=bool(anonymous))
 
+        print(inquiry)
         db.session.add(inquiry)
 
     db.session.commit()

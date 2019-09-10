@@ -43,9 +43,11 @@
 						<a class="nav-link" href="/user/{{ session['user_id'] }}">Homepage</a>
 					</li>
 				{% endif %}
+				{% if "user_id" not in session %}
 					<li class="nav-item">
 						<a class="nav-link" href="/login_page">Login/Register</a>
 					</li>
+					{% endif %}
 					<li class="nav-item">
 						<a class="nav-link" href="#About">About</a>
 					</li>
@@ -73,52 +75,30 @@
 	<div class="padding">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<h4>Built With Sass</h4>
-					<p>Place holder text. Place Holder Text.</p>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<h4>Built With Sass</h4>
-					<p>Place holder text. Place Holder Text.</p>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<h4>Built With Sass</h4>
-					<p>Place holder text. Place Holder Text.</p>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<img src="/static/img/hearmehearyoulogo.png" class="img-responisive">
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="fixed">
-
-	</div>
-
-	<div class="padding">
-		<div class="container">
-			<div class="row">
 				<div class="col-sm-6">
-					<h4>Here's the cool thing about Bootstrap...</h4>
+					<h4>What is HearMeHearYou?</h4>
 					<p>Place holder text. Place Holder Text.Place holder text. Place Holder Text.
 						Place holder text. Place Holder Text.Place holder text. Place Holder Text.
 					</p>
 				</div>
 				<div class="col-sm-6">
-					<img src="/static/img/HM_Logo.png">
+					<h4>Why was it created?</h4>
+					<p>Place holder text. Place Holder Text.Place holder text. Place Holder Text.
+						Place holder text. Place Holder Text.Place holder text. Place Holder Text.
+					</p>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div id="fixed-also">
+	
+	<div id="fixed">
 
 	</div>
 
 	<div class="padding">
 	<section id="services" class="container">
-			<h2 class="display-4 text-center mt-5 mb-3">What is HearMe?</h2>
+			<h2 class="display-4 text-center mt-5 mb-3">What We Do</h2>
 			
 			<div class="row text-center">
 				<div class="col-md-4 mb-4">
@@ -151,6 +131,33 @@
 		</section>
 	</div>
 
+	<div id="fixed-also">
+
+	</div>
+
+	<div class="padding">
+			<h2 class="display-4 text-center mt-5 mb-3">Resources</h2>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<h4>Built With Sass</h4>
+						<p>Place holder text. Place Holder Text.</p>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<h4>Built With Sass</h4>
+						<p>Place holder text. Place Holder Text.</p>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<h4>Built With Sass</h4>
+						<p>Place holder text. Place Holder Text.</p>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<img src="/static/img/hearmehearyoulogo.png" class="img-responisive">
+					</div>
+				</div>
+			</div>
+	</div>
+
 
 	<footer class="container-fluid text-center" id="contact">
 		<div class="row">
@@ -171,18 +178,10 @@
 		</div>
 	</footer>
 
-		
-
-
-	
-
 
 	<script src="scripts/jquery.min.js"></script>
 	<script src="scripts/bootstrap.bundle.min.js"></script>
 	<!-- can't put flash messages inside block content -->
-
-	
-
 
 </body>
 </html>

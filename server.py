@@ -18,7 +18,7 @@ app.secret_key = "ABC"
 @app.route("/")
 def landing_page():
     """Returns landing page."""
-    
+  
     return render_template("landing_page.html")
 
 @app.route("/login_page")
@@ -63,6 +63,17 @@ def user_detail(user_id):
     user = User.query.get(user_id)
    
     return render_template("user.html", user=user)
+
+
+@app.route("/anonymous_inquiries")
+def anonymous_inquiries():
+    """View anonymous inquiries."""
+
+    inquiries = Inquiry.query.filter_by(anonymous=True).all()
+    if session["user_id"] == 6:
+        return render_template("anonymous_inquiries.html", inquiries=inquiries)
+    else:
+        return redirect("/")
 
 @app.route("/inquiry/<int:inquiry_id>")
 def report_detail(inquiry_id):
@@ -172,8 +183,9 @@ def list_users():
 
     if session["user_id"] == 6:
 
+        inquiries = Inquiry.query.filter_by(anonymous=True).all()
         users = User.query.all()
-        return render_template("user_list.html", users=users)
+        return render_template("user_list.html", users=users, inquiries=inquiries)
     
     else:
         return redirect("/")

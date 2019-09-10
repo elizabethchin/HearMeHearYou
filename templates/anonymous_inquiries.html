@@ -1,20 +1,11 @@
 {% extends 'base.html'%}
 {% block content %}
-    <h2>Welcome Admin</h2>
-    <br>
+    
+    <div id=create-report>
+   
 
-    <h3>Inquiries by Users</h3>
-    <ul>
-        {% for user in users %}
-            <li>
-                <a href="/user/{{ user.user_id }}">
-                {{ user.email }} ({{ user.user_id}})
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
-
-    <h3>View Anonymous Inquiries</h3>
+ 
+    <h2>View Anonymous Inquiries</h2>
     <ul>
         {% for inquiry in inquiries %}
             {% if inquiry.anonymous == True %}
@@ -24,4 +15,9 @@
             {% endif %}
         {% endfor %}
     </ul>
+  
+
+    </div>
+
+    
 {% endblock %}

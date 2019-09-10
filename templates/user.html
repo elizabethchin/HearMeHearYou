@@ -4,7 +4,6 @@
     <div id=create-report>
     <h2>Welcome, {{ user.first_name }} {{ user.last_name }}!</h2>
    
-
     <form action="/create-report">
         <div>
             <button>Generate New Report</button>
@@ -15,7 +14,7 @@
         <h2>View Submitted Inquiries</h2>
         <ul>
             {% for inquiry in user.inquiries %}
-                {% if inquiry.archive != True %}
+                {% if inquiry.archive != True and inquiry.anonymous != True %}
                 <li>
                     <a href="/inquiry/{{ inquiry.inquiry_id }}"> Inquiry ID: {{ inquiry.inquiry_id }}</a>
                 </li>
@@ -23,10 +22,20 @@
             {% endfor %}
         </ul>
     {% endif %}
-
     {% if user.inquiries and session["user_id"] != 6%}
-
-        <h2>Archive - View Saved Inquiries</h2>
+    {% if user.inquiries %}
+        <h2>View Anonymous Inquiries</h2>
+        <ul>
+            {% for inquiry in user.inquiries %}
+                {% if inquiry.anonymous == True %}
+                <li>
+                    <a href="/inquiry/{{ inquiry.inquiry_id }}"> Inquiry ID: {{ inquiry.inquiry_id }}</a>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    {% endif %}    
+        <h2>Archive - Saved inquiries</h2>
         <ul>
             {% for inquiry in user.inquiries %}
                 {% if inquiry.archive == True %}
@@ -35,9 +44,11 @@
                 </li>
                 {% endif %}
             {% endfor %}
-        </ul>
-        
+        </ul> 
     {% endif %}
+
+
+  
     </div>
 
 

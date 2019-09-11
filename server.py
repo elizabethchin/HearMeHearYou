@@ -21,6 +21,12 @@ def landing_page():
   
     return render_template("landing_page.html")
 
+@app.route("/sliding")
+def sliding_login():
+    """Returns sliding login/sign up"""
+  
+    return render_template("sliding_sign_in_up.html")
+
 @app.route("/login_page")
 def login_page():
     """Renders login page."""
@@ -126,7 +132,7 @@ def handle_report():
     location = request.form.get("location")
     witness = request.form.get("witness")
     inquiry_text = request.form.get("inquiry_text")
-    anonymous = request.form.get(bool("anonymous"))
+    anonymous = request.form.get("anonymous")
     user_id = session["user_id"]
     archive = False
 
@@ -150,7 +156,11 @@ def save_report():
     location = request.form.get("location")
     witness = request.form.get("witness")
     inquiry_text = request.form.get("inquiry_text")
-    anonymous = request.form.get(bool("anonymous"))
+    anonymous = request.form.get("anonymous")
+    if anonymous == "1":
+        anonymous = TRUE
+    else:
+        anonymouse = FALSE
     user_id = session["user_id"]
     archive = True
 

@@ -7,36 +7,71 @@
 
 
 <form action="/handle-report" method="POST">
+    <div class="container">
+        <div id="handle-report">
+            <h3>Incident Report</h3>
+            <div class="row">
+                <div class="col-25">
+                <label>Today's Date: </label>
+                </div>
+                <div class="col-75">
+                    <input type="date" name="todays_date" placeholder="today's date"><br>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-25">
+                <label>Incident Date: </label>
+                </div>
+                <div class="col-75">
+                    <input type="date" name="incident_date" placeholder="incident date"><br>
+                </div>
+            </div>
 
-    <div id="handle-report">
-        <h3>Incident Report</h3>
+            <div class="row">
+                <div class="col-25">
+                    <label>Location:  </label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="location" placeholder="location"><br>  
+                </div>
+            </div>     
 
-        <label>Today's Date: </label>
-        <input type="date" name="todays_date" placeholder="today's date"><br>
+            <div class="row">
+                <div class="col-25">
+                    <label>Witness:  </label>
+                </div>
+                <div class="col-75">
+                    <input type="text" name="witness" placeholder="witness" ><br> 
+                </div>
+            </div>  
 
-        <label>Incident Date: </label>
-        <input type="date" name="incident_date" placeholder="incident date"><br>
+            <div class="row">
+                <div class="col-25">
+                    <label>Inquiry text:  </label>
+                </div>
+                <div class="col-75">
+                        <textarea id="myTextArea" name="inquiry_text" placeholder="Text..." rows = "15" cols = "80"></textarea><br> 
+                </div>
+            </div> 
 
- 		<label>Location:  </label>
-        <input type="text" name="location" placeholder="location"><br>       
+            <div class="row">
+                <div class="col-25">
+                        <label>Anonymous:  </label>
+                </div>
+                <div class="col-75">
+                    <input type="radio" name="anonymous" value=1 id="anonymous"> True 
+                    <input type="radio" name="anonymous" value=0 id="anonymous"> False <br> 
+                </div>
+            </div> 
 
-        <label>Witness:  </label>
-        <input type="text" name="witness" placeholder="witness" ><br>
-        <p>
-        <label>Inquiry text:  </label>
-        <textarea type="text"
-                name="inquiry_text"
-                id = "myTextArea"
-                rows = "15"
-                cols = "80"> </textarea><br>
-    	</p>
-
-        <label>Anonymous:  </label>
-        <input type="radio" name="anonymous" value=1 id="anonymous"> True 
-        <input type="radio" name="anonymous" value=0 id="anonymous"> False <br>
-        
-        <input type="submit" formaction="/save-report" name="action" value="Save to Archive"/><br>
-        <button>Submit to HearMe</button><br>
+            <div class="row">
+                <input type="submit" formaction="/save-report" name="action" value="Save to Archive"/><br>
+            </div>
+            <div class="row">
+                <button>Submit to HearMeHearYou</button><br>
+            </div>
+        </div>
     </div>
     
 </form>

@@ -5,12 +5,55 @@
 {% block content %}
 <div class="container">
 <div id="inquiry_report">
-    <h3> Incident:</h3>
-    <h5> Today's date:{{ inquiry.todays_date }}</h5></br>
-    <h5> Incident date:{{ inquiry.incident_date }}</h5></br>
-    <h5> Subject{{ inquiry.subject }}</h5></br>
-    <h5> Inquiry Text:{{ inquiry.inquiry_text }}</h5></br>
-    <h5> Anonymous:{{ inquiry.anonymous }}</h5></br>
+    <h3> Incident Report</h3>
+
+    <div class="row">
+        <div class="col-25">
+        <h5>Subject:</h5>
+        </div>
+        <div class="col-75">
+            <h5> {{ inquiry.subject }}</h5></br>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-25">
+        <h5>Today's date:</h5>
+        </div>
+        <div class="col-75">
+            <h5> {{ inquiry.todays_date }}</h5></br>
+        </div>
+    </div>
+    
+
+    <div class="row">
+        <div class="col-25">
+        <h5>Incident date:</h5>
+        </div>
+        <div class="col-75">
+            <h5> {{ inquiry.incident_date }}</h5></br>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-25">
+        <h5>Inquiry:</h5>
+        </div>
+        <div class="col-75">
+            <h5> {{ inquiry.inquiry_text }}</h5></br>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-25">
+        <h5>Anonymous:</h5>
+        </div>
+        <div class="col-75">
+            <h5> {{ inquiry.anonymous}}</h5></br>
+        </div>
+    </div>
+
 </div>
 </div>
 
@@ -27,21 +70,37 @@
 <div> 
     <form action="/reply-form" method="POST">
     <div id="view-report">
-        <h1>Response Form</h1>
+        <h1>Reply Form</h1>
         <!-- User ID in session -->
-        <input style="display:none" name="user_id" value="{{ user_id }}"><br>
 
+        <input style="display:none" name="user_id" value="{{ user_id }}"><br>
         <!-- Replying to Inquiry ID# -->
         <input style="display:none" name="inquiry_id" value="{{ inquiry.inquiry_id }}"><br>
         <!-- Responding to thread #  -->
         <input style="display:none" name="responding_to" value="{{ inquiry.inquiry_id }}"><br>
-        Today's Date:
-        <input type="date" name="todays_date" placeholder="today's date"><br>
-        <p>
-        Reply:
-        <textarea type="text" name="response_text" id = "myTextArea" rows = "15" cols = "80"> </textarea><br>
-        </p>
-        <button>Submit Reply</button>
+
+        <div class="row">
+            <div class="col-25">
+            <label>Today's Date: </label>
+            </div>
+            <div class="col-75">
+                <input type="date" name="todays_date" placeholder="today's date"><br>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-25">
+                <label>Reply:  </label>
+            </div>
+            <div class="col-75">
+                <textarea type="text" name="response_text" placeholder="Reply..." id="myTextArea" rows = "5" cols = "30"> </textarea><br>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-25">
+                <button id="savebtn">Submit Reply</button>
+            </div>
+        </div>
     </div>
     </form>  
 </div>

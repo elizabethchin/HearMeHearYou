@@ -57,7 +57,7 @@ class Inquiry(db.Model):
     incident_date = db.Column(db.TIMESTAMP(timezone=True), nullable=True)
     subject = db.Column(db.String(100), nullable=True)
     inquiry_text = db.Column(EncryptedType(db.String(1000000), keys["db_key"], AesEngine, "pkcs5"))
-    anonymous = db.Column(db.Boolean, default=False)
+    anonymous = db.Column(db.Boolean, default=True)
     archive = db.Column(db.Boolean)
 
     user = db.relationship('User')

@@ -30,21 +30,12 @@
 
             <div class="row">
                 <div class="col-25">
-                    <label>Location:  </label>
+                    <label>Subject:  </label>
                 </div>
                 <div class="col-75">
-                    <input type="text" name="location" placeholder="location"><br>  
+                    <input type="text" name="subject" placeholder="subject"><br>  
                 </div>
             </div>     
-
-            <div class="row">
-                <div class="col-25">
-                    <label>Witness:  </label>
-                </div>
-                <div class="col-75">
-                    <input type="text" name="witness" placeholder="witness" ><br> 
-                </div>
-            </div>  
 
             <div class="row">
                 <div class="col-25">
@@ -60,17 +51,20 @@
                         <label>Anonymous:  </label>
                 </div>
                 <div class="col-75">
-                    <input type="radio" name="anonymous" value=1 id="anonymous"> True 
-                    <input type="radio" name="anonymous" value=0 id="anonymous"> False <br> 
+                    <input type="radio" name="anonymous" value="True" id="anonymous"> True 
+                    <input type="radio" name="anonymous" value="False" id="anonymous"> False <br> 
                 </div>
             </div> 
 
             <div class="row">
-                <input type="submit" formaction="/save-report" name="action" value="Save to Archive"/><br>
+                <div class="col-25">
+                    <input id="savebtn" type="submit" formaction="/save-report" name="action" value="Save to Archive"/>
+                </div>
+                <div class="col-25">
+                    <input id="submitbtn" type="submit" value="Submit to HearMeHearYou"/>
+                </div>
             </div>
-            <div class="row">
-                <button>Submit to HearMeHearYou</button><br>
-            </div>
+
         </div>
     </div>
     

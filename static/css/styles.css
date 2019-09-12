@@ -260,9 +260,19 @@ h1 {
     display: inline-block;
   }
   
-  input[type=submit] {
-    background-color: #4CAF50;
-    color: white;
+  #savebtn {
+    background-color: #f4f4f4;
+    color: #373737;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+
+  #submitbtn {
+    background-color: #373737;
+    color: #c0b283;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
@@ -275,8 +285,8 @@ h1 {
   }
   
   .container {
-    border-radius: 5px;
-    background-color: #f2f2f2;
+    border-radius: 0px;
+    background-color: #dcd0c0;
     padding: 20px;
   }
   

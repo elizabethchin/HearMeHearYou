@@ -37,7 +37,7 @@ def load_inquiries():
     for row in open("seed_data/u.inquiry"):
         row = row.rstrip().split("|")
         print(row)
-        user_id, todays_date, incident_date, location, witness, inquiry_text, anonymous = row
+        user_id, todays_date, incident_date, subject, inquiry_text, anonymous = row
         
         if todays_date == "none":
        		t_date = None
@@ -52,8 +52,7 @@ def load_inquiries():
         inquiry = Inquiry(user_id=int(user_id),
                     todays_date=t_date,
                     incident_date=i_date,
-                    location=location,
-                    witness=witness,
+                    subject=subject,
                     inquiry_text=inquiry_text,
                     anonymous=bool(anonymous))
 

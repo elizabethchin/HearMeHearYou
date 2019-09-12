@@ -129,15 +129,14 @@ def handle_report():
     
     todays_date = request.form.get("todays_date")
     incident_date = request.form.get("incident_date")
-    location = request.form.get("location")
-    witness = request.form.get("witness")
+    subject = request.form.get("subject")
     inquiry_text = request.form.get("inquiry_text")
     anonymous = request.form.get("anonymous")
     user_id = session["user_id"]
     archive = False
 
-    new_inquiry = Inquiry(user_id=user_id, todays_date=todays_date, location=location, 
-    incident_date=incident_date, witness=witness, inquiry_text=inquiry_text, anonymous=anonymous, archive=archive)
+    new_inquiry = Inquiry(user_id=user_id, todays_date=todays_date, subject=subject, 
+    incident_date=incident_date,inquiry_text=inquiry_text, anonymous=anonymous, archive=archive)
     
     db.session.add(new_inquiry)
     db.session.commit()
@@ -153,19 +152,14 @@ def save_report():
     
     todays_date = request.form.get("todays_date")
     incident_date = request.form.get("incident_date")
-    location = request.form.get("location")
-    witness = request.form.get("witness")
+    subject = request.form.get("subject")
     inquiry_text = request.form.get("inquiry_text")
-    anonymous = request.form.get("anonymous")
-    if anonymous == "1":
-        anonymous = TRUE
-    else:
-        anonymouse = FALSE
+    anonymous = request.form.get(bool("anonymous"))
     user_id = session["user_id"]
     archive = True
 
-    new_inquiry = Inquiry(user_id=user_id, todays_date=todays_date, location=location, 
-    incident_date=incident_date, witness=witness, inquiry_text=inquiry_text, anonymous=anonymous, archive=archive)
+    new_inquiry = Inquiry(user_id=user_id, todays_date=todays_date, subject=subject, 
+    incident_date=incident_date, inquiry_text=inquiry_text, anonymous=anonymous, archive=archive)
     
   
     db.session.add(new_inquiry)

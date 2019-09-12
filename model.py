@@ -55,8 +55,7 @@ class Inquiry(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     todays_date = db.Column(db.TIMESTAMP(timezone=True), nullable=False)
     incident_date = db.Column(db.TIMESTAMP(timezone=True), nullable=True)
-    location = db.Column(db.String(100), nullable=True)
-    witness = db.Column(db.String(100), nullable=True)
+    subject = db.Column(db.String(100), nullable=True)
     inquiry_text = db.Column(EncryptedType(db.String(1000000), keys["db_key"], AesEngine, "pkcs5"))
     anonymous = db.Column(db.Boolean, default=False)
     archive = db.Column(db.Boolean)
@@ -67,8 +66,8 @@ class Inquiry(db.Model):
     def __repr__(self):
         """Provide helpful representation when printed."""
         return """<Inquiry: inquiry_id={} user_id={} todays_date={} incident_date={}
-                location={} witness={} incident_text={} anonymous={}>""".format(self.inquiry_id, self.user_id, self.todays_date, 
-                self.incident_date, self.location, self.witness, self.inquiry_text, self.anonymous, self.archive)
+                subject={} incident_text={} anonymous={}>""".format(self.inquiry_id, self.user_id, self.todays_date, 
+                self.incident_date, self.subject, self.inquiry_text, self.anonymous, self.archive)
 
 class Response(db.Model):
     """List of responses to inquiries."""

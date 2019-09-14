@@ -331,14 +331,11 @@ h1 {
     }
   }
 
-  #tabs {
-    background-color: #c0b283;
-  }
-
-  .tab-content {
-    
-  }
-
-  #button {
+  #genbtn {
       background-color: #c0b283
+  }
+
+  a{
+      color: #373737;
+      font-size: 16px;
   }

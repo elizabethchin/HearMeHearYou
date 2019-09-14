@@ -1,73 +1,91 @@
 {% extends 'base.html'%}
 {% block content %}
-    <div class="container">
+      
+    
     <div id=create-report>
-    <h2>Welcome, {{ user.first_name }} {{ user.last_name }}!</h2>
-   
-    <form action="/create-report">
-        <div>
-            <button>Generate New Report</button>
-        </div>
-    </form>
-
-    {% if user.inquiries %}
-        <div class="row">
-            <div class="col-40">
-                <h2>View Submitted Inquiries</h2>
-            </div>
-            <div class="col-60">
-                <ul>
-                    {% for inquiry in user.inquiries %}
-                        {% if inquiry.archive != True and inquiry.anonymous != True %}
-                        <li>
-                            <a href="/inquiry/{{ inquiry.inquiry_id }}"> Inquiry ID: {{ inquiry.inquiry_id }}</a>
-                        </li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>  
-    {% endif %}
-
-    {% if user.inquiries and session["user_id"] != 6%}
-        {% if user.inquiries %}
-            <div class="row">
-                <div class="col-40">
-                    <h2>View Anonymous Inquiries</h2>
-                </div>
-                <div class="col-60">
-                    <ul>
-                        {% for inquiry in user.inquiries %}
-                            {% if inquiry.anonymous == True %}
-                            <li>
-                                <a href="/inquiry/{{ inquiry.inquiry_id }}"> Inquiry ID: {{ inquiry.inquiry_id }}</a>
-                            </li>
-                            {% endif %}
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        {% endif %}    
-
-        <div class="row">
-            <div class="col-40">
-                <h2>Archive - Saved inquiries</h2>
-            </div>
-            <div class="col-60">
-                <ul>
-                    {% for inquiry in user.inquiries %}
-                        {% if inquiry.archive == True %}
-                        <li>
-                            <a href="/inquiry/{{ inquiry.inquiry_id }}"> Inquiry ID: {{ inquiry.inquiry_id }}</a>
-                        </li>
-                        {% endif %}
-                    {% endfor %}
-                </ul> 
-            </div>
-        </div>
-
-    {% endif %}
+    <div class="header"> 
+        <h2>Welcome, {{ user.first_name }} {{ user.last_name }}!</h2>
     </div>
+    <div class="bs-example">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="#generate-report" class="nav-link active" data-toggle="tab">New Report</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#submitted-reports" class="nav-link" data-toggle="tab">Submitted Inquiries</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#anonymous-reports" class="nav-link" data-toggle="tab">Anonymous Inquiries</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#saved-reports" class="nav-link" data-toggle="tab">Saved Inquiries</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in show active" id="generate-report">
+                    <p>
+                        <form action="/create-report">
+                            <div>
+                                <button>Generate New Report</button>
+                            </div>
+                        </form>
+                    </p>
+
+                </div>
+                <div class="tab-pane fade" role="tabpanel" id="submitted-reports">
+                    {% if user.inquiries %}
+
+                        <ul>
+                            {% for inquiry in user.inquiries %}
+                                {% if inquiry.archive != True and inquiry.anonymous != True %}
+                                <li>
+                                    <a href="/inquiry/{{ inquiry.inquiry_id }}"> Inquiry ID: {{ inquiry.inquiry_id }}</a>
+                                </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+     
+                    {% endif %}
+                </div>
+
+
+                <div class="tab-pane fade" id="anonymous-reports">
+                    {% if user.inquiries and session["user_id"] != 6%}
+                    {% if user.inquiries %}
+                        <ul>
+                            {% for inquiry in user.inquiries %}
+                                {% if inquiry.anonymous == True %}
+                                <li>
+                                    <a href="/inquiry/{{ inquiry.inquiry_id }}"> Inquiry ID: {{ inquiry.inquiry_id }}</a>
+                                </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %} 
+                    {% endif %} 
+                </div>
+
+                <div class="tab-pane fade" id="saved-reports">
+                    {% if user.inquiries and session["user_id"] != 6%}
+
+                    <div class="row">
+
+                        <ul>
+                            {% for inquiry in user.inquiries %}
+                                {% if inquiry.archive == True %}
+                                <li>
+                                    <a href="/inquiry/{{ inquiry.inquiry_id }}"> Inquiry ID: {{ inquiry.inquiry_id }}</a>
+                                </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul> 
+                
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    
     </div>
+
 
 {% endblock %}

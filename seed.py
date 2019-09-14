@@ -49,6 +49,11 @@ def load_inquiries():
         else:
             i_date = datetime.strptime(incident_date, "%d-%b-%Y")
 
+        print('reading it in!')
+        print(anonymous)
+        anonymous = anonymous == 'True'
+        print(anonymous)
+
         inquiry = Inquiry(user_id=int(user_id),
                     todays_date=t_date,
                     incident_date=i_date,

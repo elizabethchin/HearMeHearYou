@@ -53,6 +53,13 @@
             <h5> {{ inquiry.anonymous}}</h5></br>
         </div>
     </div>
+    {% if inquiry.anonymous == True %}
+    <div class="row">
+        <div class="col-25">
+            <input id="submitbtn" type="submit" value="Submit to HearMeHearYou" formaction="/handle-report" method="POST"/>
+        </div>
+    </div>
+    {% endif %}
 
 </div>
 </div>
@@ -78,6 +85,9 @@
         <input style="display:none" name="inquiry_id" value="{{ inquiry.inquiry_id }}"><br>
         <!-- Responding to thread #  -->
         <input style="display:none" name="responding_to" value="{{ inquiry.inquiry_id }}"><br>
+        <!-- If report is archived or not #  -->
+        <input name="archive" value="{{ inquiry.archive }}"><br>
+
 
         <div class="row">
             <div class="col-25">

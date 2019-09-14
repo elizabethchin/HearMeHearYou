@@ -31,7 +31,7 @@ def sliding_login():
 def login_page():
     """Renders login page."""
 
-    return render_template("login_page.html")
+    return render_template("dynamic_login_page.html")
 
 @app.route("/login", methods=["POST"])
 def process_login():
@@ -135,8 +135,15 @@ def handle_report():
     user_id = session["user_id"]
     archive = False
 
+    print("HEREEEEEE")
+    print(anonymous)
+    anonymous = anonymous == "True"
+    print(anonymous)
+
+
+
     new_inquiry = Inquiry(user_id=user_id, todays_date=todays_date, subject=subject, 
-    incident_date=incident_date,inquiry_text=inquiry_text, anonymous=anonymous, archive=archive)
+    incident_date=incident_date,inquiry_text=inquiry_text, anonymous=bool(anonymous), archive=archive)
     
     db.session.add(new_inquiry)
     db.session.commit()
@@ -154,14 +161,18 @@ def save_report():
     incident_date = request.form.get("incident_date")
     subject = request.form.get("subject")
     inquiry_text = request.form.get("inquiry_text")
-    anonymous = request.form.get(bool("anonymous"))
+    anonymous = request.form.get("anonymous")
     user_id = session["user_id"]
     archive = True
+    print("HEREEEEEE")
+    print(anonymous)
+    anonymous = anonymous == "True"
+    print(anonymous)
+
 
     new_inquiry = Inquiry(user_id=user_id, todays_date=todays_date, subject=subject, 
-    incident_date=incident_date, inquiry_text=inquiry_text, anonymous=anonymous, archive=archive)
+    incident_date=incident_date, inquiry_text=inquiry_text, anonymous=bool(anonymous), archive=archive)
     
-  
     db.session.add(new_inquiry)
     db.session.commit()
 
@@ -192,6 +203,11 @@ def reply_form():
     response_date = request.form.get("todays_date")
     responding_to = request.form.get("inquiry_id")
     response_text = request.form.get("response_text")
+
+    response_date= response_date[:11]
+
+    print("HEREEEEEEEEEE")
+    print(response_date)
 
     new_response = Response(inquiry_id=inquiry_id, user_id=user_id, response_date=response_date,
         responding_to=responding_to, response_text=response_text)

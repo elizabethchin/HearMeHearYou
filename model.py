@@ -53,8 +53,8 @@ class Inquiry(db.Model):
 
     inquiry_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    todays_date = db.Column(db.TIMESTAMP(timezone=True), nullable=False)
-    incident_date = db.Column(db.TIMESTAMP(timezone=True), nullable=True)
+    todays_date = db.Column(db.DateTime, nullable=False)
+    incident_date = db.Column(db.DateTime, nullable=True)
     subject = db.Column(db.String(100), nullable=True)
     inquiry_text = db.Column(EncryptedType(db.String(1000000), keys["db_key"], AesEngine, "pkcs5"))
     anonymous = db.Column(db.Boolean, default=True)
@@ -77,7 +77,7 @@ class Response(db.Model):
     response_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     inquiry_id = db.Column(db.Integer, db.ForeignKey('inquiries.inquiry_id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False) #change this to person replying
-    response_date = db.Column(db.TIMESTAMP(timezone=True), nullable=False)
+    response_date = db.Column(db.DateTime, nullable=False)
     responding_to = db.Column(db.Integer, nullable=False)
     response_text = db.Column(EncryptedType(db.String(1000000), keys["db_key"], AesEngine, "pkcs5"))
 

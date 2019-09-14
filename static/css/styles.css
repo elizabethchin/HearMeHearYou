@@ -24,10 +24,6 @@
     font-size: 14px;
 }
 
-#create-report {
-    padding: 50px;
-    font-size: 14px;
-}
 
 #view-report {
     font-size: small;
@@ -78,7 +74,7 @@ footer {
 }
 
 .nav-link{
-    color: #f4f4f4;
+    color: #c0b283;
 }
 
 .navbar-brand{
@@ -100,17 +96,24 @@ footer {
     background-color: rgb(234,234,235);
 }
 
-#blank-page{
-    background-color: #F4F4F4;
+#block-content{
     background: url("/static/img/paper_bg.jpg") no-repeat center center fixed;
     display: table;
     height: 100%;
-    position: bottom;
- 	width: 100%;
+    position: relative;
+    width: 100%;
     background-size: cover;
-    padding-top: 70px;
-    bottom: 1000px;
+
 }
+
+#create-report {
+    background-color: #F4F4F4;
+    padding: 50px;
+    font-size: 14px;
+    height: 100%;
+    
+}
+
 
 
 .landing-text{
@@ -144,6 +147,17 @@ footer {
     width: 100%;
     background-size: cover;
 }
+
+#fixed-user {
+    background: url("/static/img/paper_bg.jpg") no-repeat center center fixed;
+    display: table;
+    height: 30%;
+    position: relative;
+    width: 100%;
+    background-size: cover;
+}
+
+
 
 .container-fluid {
     width: 100%;
@@ -315,4 +329,16 @@ h1 {
       width: 100%;
       margin-top: 0;
     }
+  }
+
+  #tabs {
+    background-color: #c0b283;
+  }
+
+  .tab-content {
+    
+  }
+
+  #button {
+      background-color: #c0b283
   }

@@ -21,17 +21,11 @@ def landing_page():
   
     return render_template("landing_page.html")
 
-@app.route("/sliding")
-def sliding_login():
-    """Returns sliding login/sign up"""
-  
-    return render_template("sliding_sign_in_up.html")
-
 @app.route("/login_page")
 def login_page():
     """Renders login page."""
 
-    return render_template("dynamic_login_page.html")
+    return render_template("login_page.html")
 
 @app.route("/login", methods=["POST"])
 def process_login():

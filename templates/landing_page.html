@@ -65,11 +65,11 @@
 	</nav>
 
 	<div id="home">
-		<div id="flash-message">
+		<!-- <div id="flash-message">
 				{% for message in get_flashed_messages() %}
 					{{ message }}
 				{% endfor %}
-		</div>
+		</div> -->
 		
 	</div>
 
@@ -147,19 +147,25 @@
 				<div class="row">
 					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 						<p><img src="/static/img/ombuds.png"></p>
-						<h4>Ombuds Association Website</h4>
+						<h4><a href="https://www.ombudsassociation.org/">
+						Ombuds Association Website</a></h4>
+						
 					</div>
 					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 						<p><img src="/static/img/hbr-logo2.png"></p>
-						<h4>Why Diversity With Inclusion Doesn't Work</h4>
+						<h4><a href="https://hbr.org/2017/02/diversity-doesnt-stick-without-inclusion">
+							Why Diversity Without Inclusion Doesn’t Work</a></h4>
 					</div>
 					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 						<p><img src="/static/img/mckinsey-logo2.png"></p>
-						<h4>Delivering through Diversity</h4>
+						<h4><a href="https://www.mckinsey.com/~/media/mckinsey/business%20functions/organization/our%20insights/delivering%20through%20diversity/delivering-through-diversity_full-report.ashx">
+							Delivering through Diversity</a></h4>
 					</div>
 					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 						<p><img src="/static/img/deloitte_insights_logo.png"></p>
-						<h4>Global Human Capital Trends</h4>
+						<h4 ><a href="https://www2.deloitte.com/insights/us/en/focus/human-capital-trends/2017/diversity-and-inclusion-at-the-workplace.html">
+							Global Human Capital Trends</a>
+						</h4>
 					</div>
 				</div>
 			</div>
@@ -168,9 +174,7 @@
 
 	<footer class="container-fluid text-center" id="contact">
 		<div class="row">
-			<div class="col-sm-4" id="empty">
-					
-			</div>
+			<div class="col-sm-4" id="empty"></div>
 			<div class="col-sm-4" id="icons">
 				<p class="text-center">Copyright &copy; HearMeHearYou 2019</p>
 				<a href="#contact" class="fa fa-facebook"></a>
@@ -179,13 +183,14 @@
 				<a href="#contact" class="fa fa-linkedin"></a>
 				<a href="#contact" class="fa fa-instagram"></a>
 			</div>
-			<div class="col-sm-4" id="empty">
-					
-			</div>
+			<div class="col-sm-4" id="empty"></div>
 		</div>
 	</footer>
 
 
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<script src="scripts/jquery.min.js"></script>
 	<script src="scripts/bootstrap.bundle.min.js"></script>
 	<!-- can't put flash messages inside block content -->

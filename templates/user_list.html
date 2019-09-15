@@ -2,30 +2,50 @@
 {% block content %}
 <div class="container">
 <div id="paper-bg">
+<div class="header">
     <h2>Welcome Admin</h2>
-    <br>
+</div>
 
-    <h3>Inquiries by Users</h3>
-    <ul>
-        {% for user in users %}
-            <li>
-                <a href="/user/{{ user.user_id }}">
-                {{ user.email }} ({{ user.user_id}})
-                </a>
-            </li>
-        {% endfor %}
+<div class="bs-example">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a href="#users" class="nav-link active" data-toggle="tab">Inquiries by Users</a>
+        </li>
+        <li class="nav-item">
+            <a href="#anonymous-reports" class="nav-link" data-toggle="tab">Anonymous Inquiries</a>
+        </li>
     </ul>
 
-    <h3>View Anonymous Inquiries</h3>
-    <ul>
-        {% for inquiry in inquiries %}
-            {% if inquiry.anonymous == True %}
-            <li>
-                <a href="/inquiry/{{ inquiry.inquiry_id }}"> Inquiry ID: {{ inquiry.inquiry_id }}</a>
-            </li>
-            {% endif %}
-        {% endfor %}
-    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade in show active" id="users">
+        <ul>
+            {% for user in users %}
+                <li>
+                    <a href="/user/{{ user.user_id }}">
+                    {{ user.email }} ({{ user.user_id}})
+                    </a>
+                </li>
+            {% endfor %}
+        </ul> 
+        </div>
+    
+
+        <div class="tab-pane fade" id="anonymous-reports">
+            <ul>
+                {% for inquiry in inquiries %}
+                    {% if inquiry.anonymous == True %}
+                    <li>
+                        <a href="/inquiry/{{ inquiry.inquiry_id }}"> Inquiry ID: {{ inquiry.inquiry_id }}</a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    
+
+
+</div>
 </div>
 </div>
 {% endblock %}

@@ -97,7 +97,7 @@ footer {
 }
 
 #block-content{
-    background: url("/static/img/paper_bg.jpg") no-repeat center center fixed;
+    background-color: #f4f4f4;
     display: table;
     height: 100%;
     position: relative;
@@ -107,7 +107,8 @@ footer {
 }
 
 #create-report {
-    background-color: #F4F4F4;
+    background: url("/static/img/paper_bg.jpg") no-repeat center center fixed;
+    background-size: cover;
     padding: 50px;
     font-size: 14px;
     height: 100%;
@@ -339,3 +340,36 @@ h1 {
       color: #373737;
       font-size: 16px;
   }
+
+  .nav-tabs .nav-link {
+    border: 1px solid;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    background-color: #f4f4f4;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color #373737;
+    background-color: #f4f4f4;
+    border-color: #dee2e6 #dee2e6 #f4f4f4;
+}
+
+.fa-linkedin:before {
+    content: "\f0e1";
+    color: #f4f4f4;
+}
+.fa-facebook:before {
+    content: "\f09a";
+    color: #f4f4f4;
+}
+.fa-twitter:before {
+    content: "\f099";
+    color: #f4f4f4;
+}
+.fa-google:before {
+    content: "\f1a0";
+    color: #f4f4f4;
+}
+.fa-instagram:before {
+    content: "\f16d";
+    color: #f4f4f4;
+}

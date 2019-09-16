@@ -103,6 +103,7 @@ footer {
     position: relative;
     width: 100%;
     background-size: cover;
+    padding-top: 110px;
 
 }
 
@@ -229,7 +230,9 @@ h1 {
     font-size: 16px;
 }
 
-
+.card {
+    margin: 0 auto;
+}
 .loginbox input[type="submit"] {
     border: none;
     outline: none;
@@ -372,4 +375,4 @@ h1 {
 .fa-instagram:before {
     content: "\f16d";
     color: #f4f4f4;
-}
+

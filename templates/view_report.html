@@ -1,119 +1,159 @@
-
 {% extends 'base.html'%}
 {% block title %}Report #{{ inquiry.inquiry_id }}{% endblock %}
 
 {% block content %}
-<div class="container">
+
 <div id="inquiry_report">
-    <h3> Incident Report</h3>
-
-    <div class="row">
-        <div class="col-25">
-        <h5>Subject:</h5>
+    <div class="card mb-3"">
+    <div class=" row no-gutters">
+        <div class="col-md-4">
+            <img src="/static/img/hmhy_landingpage.png" class="card-img" alt="pic of typewriter">
         </div>
-        <div class="col-75">
-            <h5> {{ inquiry.subject }}</h5></br>
-        </div>
-    </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Incident Report</h5>
+                <p class="card-text">
+                    <div class="row">
+                        <div class="col-3">
+                            <h6>Subject:</h6>
+                        </div>
+                        <div class="col-9">
+                            <h6>{{ inquiry.subject }}</h6></br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <h6>Today's date:</h6>
+                        </div>
+                        <div class="col-9">
+                            <h6> {{ inquiry.todays_date }}</h6></br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <h6>Incident date:</h6>
+                        </div>
+                        <div class="col-9">
+                            <h6> {{ inquiry.incident_date }}</h6></br>
+                        </div>
+                    </div>
 
+                    <div class="row">
+                        <div class="col-3">
+                            <h6>Inquiry:</h6>
+                        </div>
+                        <div class="col-9">
+                            <h6> {{ inquiry.inquiry_text }}</h6></br>
+                        </div>
+                    </div>
 
-    <div class="row">
-        <div class="col-25">
-        <h5>Today's date:</h5>
-        </div>
-        <div class="col-75">
-            <h5> {{ inquiry.todays_date }}</h5></br>
-        </div>
-    </div>
-    
-
-    <div class="row">
-        <div class="col-25">
-        <h5>Incident date:</h5>
-        </div>
-        <div class="col-75">
-            <h5> {{ inquiry.incident_date }}</h5></br>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-25">
-        <h5>Inquiry:</h5>
-        </div>
-        <div class="col-75">
-            <h5> {{ inquiry.inquiry_text }}</h5></br>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-25">
-        <h5>Anonymous:</h5>
-        </div>
-        <div class="col-75">
-            <h5> {{ inquiry.anonymous}}</h5></br>
-        </div>
-    </div>
-    {% if inquiry.anonymous == True %}
-    <div class="row">
-        <div class="col-25">
-            <input id="submitbtn" type="submit" value="Submit to HearMeHearYou" formaction="/handle-report" method="POST"/>
-        </div>
-    </div>
-    {% endif %}
-
-</div>
-</div>
-
-<div class="container">
-<div>
-    <h1> Replies: </h1>
-    {% for response in responses %}
-        <li>{{ response.user.first_name }} {{ response.user.last_name }} - {{ response.response_date }}: {{ response.response_text }}</li></ul></br>
-    {% endfor %}
-</div>
-</div>
-
-<div class="container">
-<div> 
-    <form action="/reply-form" method="POST">
-    <div id="view-report">
-        <h1>Reply Form</h1>
-        <!-- User ID in session -->
-
-        <input style="display:none" name="user_id" value="{{ user_id }}"><br>
-        <!-- Replying to Inquiry ID# -->
-        <input style="display:none" name="inquiry_id" value="{{ inquiry.inquiry_id }}"><br>
-        <!-- Responding to thread #  -->
-        <input style="display:none" name="responding_to" value="{{ inquiry.inquiry_id }}"><br>
-        <!-- If report is archived or not #  -->
-        <input style="display:none" name="archive" value="{{ inquiry.archive }}"><br>
-
-
-        <div class="row">
-            <div class="col-25">
-            <label>Today's Date: </label>
-            </div>
-            <div class="col-75">
-                <input type="date" name="todays_date" placeholder="today's date"><br>
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-25">
-                <label>Reply:  </label>
-            </div>
-            <div class="col-75">
-                <textarea type="text" name="response_text" placeholder="Reply..." id="myTextArea" rows = "5" cols = "30"> </textarea><br>
-            </div>
-        </div> 
-        <div class="row">
-            <div class="col-25">
-                <button id="savebtn">Submit Reply</button>
+                    <div class="row">
+                        <div class="col-3">
+                            <h6>Anonymous:</h6>
+                        </div>
+                        <div class="col-9">
+                            <h6> {{ inquiry.anonymous}}</h6></br>
+                        </div>
+                    </div>
+                    {% if inquiry.archive == True %}
+                    <div class="row">
+                        <div class="col-3">
+                            <input id="submitbtn" type="submit" value="Submit to HearMeHearYou"
+                                formaction="/handle-report" method="POST" />
+                        </div>
+                    </div>
+                    {% endif %}
+                </p>
             </div>
         </div>
     </div>
-    </form>  
 </div>
+
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="..." class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Reply Thread</h5>
+                <p class="card-text">
+                    {% for response in responses %}
+                    <li>{{ response.user.first_name }} {{ response.user.last_name }} - {{ response.response_date }}:
+                        {{ response.response_text }}</li>
+                    </ul></br>
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
+
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="..." class="card-img" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h6 class="card-title">Card title</h6>
+                <p class="card-text">
+                    <div class="row">
+                        <div>
+                            <form action="/reply-form" method="POST">
+                                <div id="view-report">
+                                    <h1>Reply Form</h1>
+                                    <!-- User ID in session -->
+
+                                    <input style="display:none" name="user_id" value="{{ user_id }}"><br>
+                                    <!-- Replying to Inquiry ID# -->
+                                    <input style="display:none" name="inquiry_id" value="{{ inquiry.inquiry_id }}"><br>
+                                    <!-- Responding to thread #  -->
+                                    <input style="display:none" name="responding_to"
+                                        value="{{ inquiry.inquiry_id }}"><br>
+                                    <!-- If report is archived or not #  -->
+                                    <input style="display:none" name="archive" value="{{ inquiry.archive }}"><br>
+
+
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label>Today's Date: </label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="date" name="todays_date" placeholder="today's date"><br>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label>Reply: </label>
+                                        </div>
+                                        <div class="col-9">
+                                            <textarea type="text" name="response_text" placeholder="Reply..."
+                                                id="myTextArea" rows="5" cols="30"> </textarea><br>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <button id="savebtn">Submit Reply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+
+
+
+
 
 {% endblock %}

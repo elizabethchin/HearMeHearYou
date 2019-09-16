@@ -1,199 +1,232 @@
 <!DOCTYPE html>
 <html>
-<head>
-    
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{% block title %}{% endblock %}</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}{% endblock %}</title>
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	
-	<!-- Load Font Awesome -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bodini">
+    <!-- Load Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Bodini"
+    />
 
-</head>    
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
+  </head>
 
+  <body>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container-fluid ">
+        <a class="navbar-brand" href="/"
+          ><img src="/static/img/200logo.png"
+        /></a>
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbar-collapse-main"
+          aria-controls="navbar-collapse-main"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class="collapse navbar-collapse" id="navbar-collapse-main">
+          <ul class="navbar-nav ml-auto">
+            {% if "user_id" in session %}
+            <li class="nav-item active">
+              <a class="nav-link" href="/logout"
+                >Logout
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/{{ session['user_id'] }}"
+                >Homepage</a
+              >
+            </li>
+            {% endif %} {% if "user_id" not in session %}
+            <li class="nav-item">
+              <a class="nav-link" href="/login_page">Login/Register</a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Resources</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-<body>
-	<nav id=navbar class="navbar navbar-expand-lg navbar-light fixed-top">
-		<div class="container-fluid ">
-			<a class="navbar-brand" href="/"><img src="/static/img/200logo.png"></a>
-			<button type="button"class="navbar-toggler"  data-toggle="collapse" 
-			data-target="#navbar-collapse-main" aria-controls="navbar-collapse-main" 
-			aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-
-			</button>
-				
-			<div class="collapse navbar-collapse" id="navbar-collapse-main">
-				<ul class="navbar-nav ml-auto">				
-
-				{% if "user_id" in session %}
-					<li class="nav-item active">
-						<a class="nav-link" href="/logout">Logout
-							<span class="sr-only">(current)</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/user/{{ session['user_id'] }}">Homepage</a>
-					</li>
-				{% endif %}
-				{% if "user_id" not in session %}
-					<li class="nav-item">
-						<a class="nav-link" href="/login_page">Login/Register</a>
-					</li>
-					{% endif %}
-					<li class="nav-item">
-						<a class="nav-link" href="#about">About</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#contact">Resources</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#contact">Contact</a>
-					</li>
-				</ul>
-			</div>
-	
-		</div>
-	</nav>
-
-	<div id="home">
-		<!-- <div id="flash-message">
+    <div id="home">
+      <!-- <div id="flash-message">
 				{% for message in get_flashed_messages() %}
 					{{ message }}
 				{% endfor %}
 		</div> -->
-		
-	</div>
+    </div>
 
-	<div class="padding">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6">
-					<h4>What is HearMeHearYou?</h4>
-					<p>HearMeHearYou is a virtual ombuds that will be a resource for employees
-						to submit encrypted inquiries privately and/or anonymously. Ombuds is an 
-						impartial, confidential resource dedicated to assist individuals to resolve workplace concerns. 
-						This will allow employees to seek advice on career development, 
-						ethics, workplace harassment, etc.
-					</p>
-				</div>
-				<div class="col-sm-6">
-					<h4>Why was it created?</h4>
-					<p>We spend the majority of our time at work and 80% of employees lack a trused resource at work. Even if there are resources employees may
-						not feel comfortable using them. HearMeHearYou allows you the option to talk to someone anonymously. This
-						will be a tangible way for companies to show up for employees. The hope is to democratize
-						workplace support so everyone can have an accessible advocate and create a better work environment.
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6">
+            <h4>What is HearMeHearYou?</h4>
+            <p>
+              HearMeHearYou is an impartial, confidential, off the record
+              resource dedicated to assist individuals to resolve workplace
+              concerns. Employees can receive advice on career development,
+              ethics, workplace harassment, etc. Encryption provides security
+              and users have the option to submit reports anonymously.
+            </p>
+          </div>
+          <div class="col-sm-6">
+            <h4>Why was it created?</h4>
+            <p>
+              We spend the majority of our time at work and 80% of employees
+              lack a trused resource at work. HearMeHearYou removes the
+              discomfort of traditional services at work. The hope is to
+              democratize workplace support so everyone can have an accessible
+              advocate and create a better work environment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-	
-	<div id="fixed">
+    <div id="fixed"></div>
 
-	</div>
+    <div class="padding">
+      <section id="about" class="container">
+        <h2 class="display-4 text-center mt-5 mb-3">What We Do</h2>
 
-	<div class="padding">
-	<section id="about" class="container">
-			<h2 class="display-4 text-center mt-5 mb-3">What We Do</h2>
-			
-			<div class="row text-center">
-				<div class="col-md-4 mb-4">
-					<div class="card h-100">
-						<div class="card-body">
-						<h4 class="card-title">Anonymous Reporting</h4>
-						<p class="card-text">Offer employees a less stressful way to bring up workplace concerns.</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-4 mb-4">
-					<div class="card h-100">
-						<div class="card-body">
-						<h4 class="card-title">Address Issues</h4>
-							<p class="card-text">Career development, harassment, bullying etc.</p>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-md-4 mb-4">
-					<div class="card h-100">
-						<div class="card-body">
-						<h4 class="card-title">Improve Workplace Culture</h4>
-						<p class="card-text">Provide advice, prevention strategies and actionable recommendations.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-	</div>
+        <div class="row text-center">
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">Anonymous Reporting</h4>
+                <p class="card-text">
+                  Offer employees a less stressful way to bring up workplace
+                  concerns.
+                </p>
+              </div>
+            </div>
+          </div>
 
-	<div id="fixed-also">
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">Address Issues</h4>
+                <p class="card-text">
+                  Career development, harassment, bullying etc.
+                </p>
+              </div>
+            </div>
+          </div>
 
-	</div>
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">Improve Workplace Culture</h4>
+                <p class="card-text">
+                  Provide advice, prevention strategies and actionable
+                  recommendations.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
 
-	<div class="padding">
-			<h2 class="display-4 text-center mt-5 mb-3">Resources</h2>
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-						<p><img src="/static/img/ombuds.png"></p>
-						<h4><a href="https://www.ombudsassociation.org/">
-						Ombuds Association Website</a></h4>
-						
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-						<p><img src="/static/img/hbr-logo2.png"></p>
-						<h4><a href="https://hbr.org/2017/02/diversity-doesnt-stick-without-inclusion">
-							Why Diversity Without Inclusion Doesn’t Work</a></h4>
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-						<p><img src="/static/img/mckinsey-logo2.png"></p>
-						<h4><a href="https://www.mckinsey.com/~/media/mckinsey/business%20functions/organization/our%20insights/delivering%20through%20diversity/delivering-through-diversity_full-report.ashx">
-							Delivering through Diversity</a></h4>
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-						<p><img src="/static/img/deloitte_insights_logo.png"></p>
-						<h4 ><a href="https://www2.deloitte.com/insights/us/en/focus/human-capital-trends/2017/diversity-and-inclusion-at-the-workplace.html">
-							Global Human Capital Trends</a>
-						</h4>
-					</div>
-				</div>
-			</div>
-	</div>
+    <div id="fixed-also"></div>
 
+    <div class="padding">
+      <h2 class="display-4 text-center mt-5 mb-3">Resources</h2>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <p><img src="/static/img/hbr-logo2.png" /></p>
+            <h4>
+              <a
+                href="https://hbr.org/2017/02/diversity-doesnt-stick-without-inclusion"
+              >
+                Why Diversity Without Inclusion Doesn’t Work</a
+              >
+            </h4>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <p><img src="/static/img/mckinsey-logo2.png" /></p>
+            <h4>
+              <a
+                href="https://www.mckinsey.com/~/media/mckinsey/business%20functions/organization/our%20insights/delivering%20through%20diversity/delivering-through-diversity_full-report.ashx"
+              >
+                Delivering through Diversity</a
+              >
+            </h4>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <p><img src="/static/img/deloitte_insights_logo.png" /></p>
+            <h4>
+              <a
+                href="https://www2.deloitte.com/insights/us/en/focus/human-capital-trends/2017/diversity-and-inclusion-at-the-workplace.html"
+              >
+                Global Human Capital Trends</a
+              >
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
 
-	<footer class="container-fluid text-center" id="contact">
-		<div class="row">
-			<div class="col-sm-4" id="empty"></div>
-			<div class="col-sm-4" id="icons">
-				<p class="text-center">Copyright &copy; HearMeHearYou 2019</p>
-				<a href="#contact" class="fa fa-facebook"></a>
-				<a href="#contact" class="fa fa-twitter"></a>
-				<a href="#contact" class="fa fa-google"></a>
-				<a href="#contact" class="fa fa-linkedin"></a>
-				<a href="#contact" class="fa fa-instagram"></a>
-			</div>
-			<div class="col-sm-4" id="empty"></div>
-		</div>
-	</footer>
+    <footer class="container-fluid text-center" id="contact">
+      <div class="row">
+        <div class="col text-align-center" id="icons">
+          <p class="text-center">Copyright &copy; HearMeHearYou 2019</p>
+          <a href="#contact" class="fa fa-facebook"></a>
+          <a href="#contact" class="fa fa-twitter"></a>
+          <a href="#contact" class="fa fa-google"></a>
+          <a href="#contact" class="fa fa-linkedin"></a>
+          <a href="#contact" class="fa fa-instagram"></a>
+        </div>
+      </div>
+    </footer>
 
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
 
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script src="scripts/jquery.min.js"></script>
-	<script src="scripts/bootstrap.bundle.min.js"></script>
-	<!-- can't put flash messages inside block content -->
-
-</body>
+    <!-- can't put flash messages inside block content -->
+  </body>
 </html>

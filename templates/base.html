@@ -1,113 +1,113 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}{% endblock %}</title>
 
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>{% block title %}{% endblock %}</title>
-	
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		
-		<!-- Load Font Awesome -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bodini">
-	
-		<link href="css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="/static/css/styles.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 
-</head>    
+    <!-- Load Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Bodini"
+    />
 
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
+  </head>
 
-<body>
-	<nav id=navbar class="navbar navbar-expand-lg navbar-light fixed-top">
-			<div class="container-fluid ">
-				<a class="navbar-brand" href="/"><img src="/static/img/200logo.png"></a>
-				<button type="button"class="navbar-toggler"  data-toggle="collapse" 
-				data-target="#navbar-collapse-main" aria-controls="navbar-collapse-main" 
-				aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				
-			<div class="collapse navbar-collapse" id="navbar-collapse-main">
-				<ul class="navbar-nav ml-auto">				
+  <body>
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container-fluid ">
+        <a class="navbar-brand" href="/"
+          ><img src="/static/img/200logo.png"
+        /></a>
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbar-collapse-main"
+          aria-controls="navbar-collapse-main"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-				{% if "user_id" in session %}
-					<li class="nav-item active">
-						<a class="nav-link" href="/logout">Logout
-							<span class="sr-only">(current)</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/user/{{ session['user_id'] }}">Homepage</a>
-					</li>
-				{% endif %}
-					<li class="nav-item">
-						<a class="nav-link" href="#About">About</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#footer">Resources</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#footer">Contact</a>
-					</li>
-				</ul>
-			</div>
-	
-		</div>
-	</nav>
+        <div class="collapse navbar-collapse" id="navbar-collapse-main">
+          <ul class="navbar-nav ml-auto">
+            {% if "user_id" in session %}
+            <li class="nav-item active">
+              <a class="nav-link" href="/logout"
+                >Logout
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/{{ session['user_id'] }}"
+                >Homepage</a
+              >
+            </li>
+            {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href="#About">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#footer">Resources</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#footer">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-	<div class="container" id="block-content">
-		<!-- <div class="landing-text">
+    <div class="container" id="block-content">
+      <!-- <div class="landing-text">
 			{% for message in get_flashed_messages() %}
 				{{ message }}
 			{% endfor %}
 		</div> -->
 
-		
-			{% block content %}
+      {% block content %} {% endblock %}
+    </div>
 
-			{% endblock %}
+    <footer class="container-fluid text-center" id="contact">
+          <p class="text-center">Copyright &copy; HearMeHearYou 2019</p>
+          <a href="#contact" class="fa fa-facebook"></a>
+          <a href="#contact" class="fa fa-twitter"></a>
+          <a href="#contact" class="fa fa-google"></a>
+          <a href="#contact" class="fa fa-linkedin"></a>
+          <a href="#contact" class="fa fa-instagram"></a>
+    </footer>
 
-				
-	</div>
-
-
-	<footer class="container-fluid text-center" id="contact">
-			<div class="row">
-				<div class="col-sm-4" id="empty">
-						
-				</div>
-				<div class="col-sm-4" id="icons">
-					<p class="text-center">Copyright &copy; HearMeHearYou 2019</p>
-					<a href="#contact" class="fa fa-facebook"></a>
-					<a href="#contact" class="fa fa-twitter"></a>
-					<a href="#contact" class="fa fa-google"></a>
-					<a href="#contact" class="fa fa-linkedin"></a>
-					<a href="#contact" class="fa fa-instagram"></a>
-				</div>
-				<div class="col-sm-4" id="empty">
-						
-				</div>
-			</div>
-		</footer>
-
-		
-
-
-	
-
-
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script src="scripts/jquery.min.js"></script>
-	<script src="scripts/bootstrap.bundle.min.js"></script>
-	<!-- can't put flash messages inside block content -->
-
-	
-
-
-</body>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <!-- can't put flash messages inside block content -->
+  </body>
 </html>

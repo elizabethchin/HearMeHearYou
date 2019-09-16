@@ -1,74 +1,85 @@
-
 {% extends 'base.html'%}
-    {% block title %}New Report{% endblock %}
+{% block title %}Create Report{% endblock %}
 
 {% block content %}
 
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="/static/img/hmhy_landingpage.png" class="card-img" alt="pic of typewriter">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">New Report</h5>
+                <p class="card-text">
+                    <form action="/handle-report" method="POST">
+
+                        <div class="row">
+                            <div class="col-3">
+                                <h6>Today's Date: </h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="date" name="todays_date" placeholder="today's date"><br>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3">
+                                <h6>Incident Date: </h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="date" name="incident_date" placeholder="incident date"><br>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3">
+                                <h6>Subject: </h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" name="subject" placeholder="subject"><br>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3">
+                                <h6>Inquiry text: </h6>
+                            </div>
+                            <div class="col-9">
+                                <textarea id="myTextArea" name="inquiry_text" placeholder="Text..." rows="5"
+                                    cols="80"></textarea><br>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-3">
+                                <h6>Anonymous: </h6>
+                            </div>
+                            <div class="col-9">
+                                <input type="radio" name="anonymous" value="True" id="anonymous"> True
+                                <input type="radio" name="anonymous" value="False" id="anonymous"> False <br><br>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-6">
+                                <input id="savebtn" type="submit" formaction="/save-report" name="action"
+                                    value="Save to Archive" />
+                            </div>
+                            <div class="col-6">
+                                <input id="submitbtn" type="submit" value="Submit to HearMeHearYou" />
+                            </div>
+                        </div>
+                    </form>
 
 
-<form action="/handle-report" method="POST">
-    <div class="container">
-        <div id="handle-report">
-            <h3>New Report</h3>
-            <div class="row">
-                <div class="col-25">
-                <label>Today's Date: </label>
-                </div>
-                <div class="col-75">
-                    <input type="date" name="todays_date" placeholder="today's date"><br>
-                </div>
+                </p>
             </div>
-            
-            <div class="row">
-                <div class="col-25">
-                <label>Incident Date: </label>
-                </div>
-                <div class="col-75">
-                    <input type="date" name="incident_date" placeholder="incident date"><br>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-25">
-                    <label>Subject:  </label>
-                </div>
-                <div class="col-75">
-                    <input type="text" name="subject" placeholder="subject"><br>  
-                </div>
-            </div>     
-
-            <div class="row">
-                <div class="col-25">
-                    <label>Inquiry text:  </label>
-                </div>
-                <div class="col-75">
-                        <textarea id="myTextArea" name="inquiry_text" placeholder="Text..." rows = "15" cols = "80"></textarea><br> 
-                </div>
-            </div> 
-
-            <div class="row">
-                <div class="col-25">
-                        <label>Anonymous:  </label>
-                </div>
-                <div class="col-75">
-                    <input type="radio" name="anonymous" value="True" id="anonymous"> True 
-                    <input type="radio" name="anonymous" value="False" id="anonymous"> False <br> 
-                </div>
-            </div> 
-
-            <div class="row">
-                <div class="col-25">
-                    <input id="savebtn" type="submit" formaction="/save-report" name="action" value="Save to Archive"/>
-                </div>
-                <div class="col-25">
-                    <input id="submitbtn" type="submit" value="Submit to HearMeHearYou"/>
-                </div>
-            </div>
-
         </div>
     </div>
-    
-</form>
+</div>
+
+
 
 
 {% endblock %}

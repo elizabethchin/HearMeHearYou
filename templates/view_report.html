@@ -79,9 +79,19 @@
                 <h5 class="card-title">Reply Thread</h5>
                 <p class="card-text">
                     {% for response in responses %}
+                    {% if response.user_id == 6 %}
                     <li>{{ response.user.first_name }} {{ response.user.last_name }} - {{ response.response_date }}:
                         {{ response.response_text }}</li>
                     </ul></br>
+                    {% elif inquiry.anonymous == False %}
+                    <li>{{ response.user.first_name }} {{ response.user.last_name }} - {{ response.response_date }}:
+                            {{ response.response_text }}</li>
+                        </ul></br>
+                    {% else %}
+                    <li>Anonymous User - {{ response.response_date }}:
+                            {{ response.response_text }}</li>
+                        </ul></br>  
+                    {% endif %}                  
                     {% endfor %}
                 </p>
             </div>

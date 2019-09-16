@@ -1,9 +1,9 @@
-{% extends 'base.html'%}
+{% extends 'base.html' %}
 {% block title %}User's Page{% endblock %}
 {% block content %}
 
 
-<div id=create-report>
+<div id="user-list">
     <div class="header">
         <h2>Welcome, {{ user.first_name }} {{ user.last_name }}!</h2>
     </div>
@@ -35,7 +35,7 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title">Submitted Reports</h5>
-                    <p class="card-text">
+                    <p class="card-text" color=#373737;>
                         {% if user.inquiries %}
                         <ul>
                             {% for inquiry in user.inquiries %}
@@ -63,22 +63,21 @@
                 <div class="card-body">
                     <h5 class="card-title">Anonymous Submissions</h5>
                     <p class="card-text">
-                        <div class="tab-pane fade" id="anonymous-reports">
-                            {% if user.inquiries and session["user_id"] != 6%}
-                            {% if user.inquiries %}
-                            <ul>
-                                {% for inquiry in user.inquiries %}
-                                {% if inquiry.anonymous == True %}
-                                <li>
-                                    <a href="/inquiry/{{ inquiry.inquiry_id }}"> Inquiry ID:
-                                        {{ inquiry.inquiry_id }}</a>
-                                </li>
-                                {% endif %}
-                                {% endfor %}
-                            </ul>
+
+                        {% if user.inquiries and session["user_id"] != 6%}
+                        {% if user.inquiries %}
+                        <ul>
+                            {% for inquiry in user.inquiries %}
+                            {% if inquiry.anonymous == True %}
+                            <li>
+                                <a href="/inquiry/{{ inquiry.inquiry_id }}"> Inquiry ID: {{ inquiry.inquiry_id }}</a>
+                            </li>
                             {% endif %}
-                            {% endif %}
-                        </div>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% endif %}
+
 
                     </p>
 

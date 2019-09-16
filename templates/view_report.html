@@ -4,7 +4,7 @@
 {% block content %}
 
 <div id="inquiry_report">
-    <div class="card mb-3"">
+    <div class="card mb-3">
     <div class=" row no-gutters">
         <div class="col-md-4">
             <img src="/static/img/hmhy_landingpage.png" class="card-img" alt="pic of typewriter">
@@ -72,7 +72,7 @@
 <div class="card mb-3">
     <div class="row no-gutters">
         <div class="col-md-4">
-            <img src="..." class="card-img" alt="...">
+            <img src="/static/img/reply.jpg" class="card-img" alt="person typing on a laptop">
         </div>
         <div class="col-md-8">
             <div class="card-body">
@@ -92,68 +92,57 @@
 <div class="card mb-3">
     <div class="row no-gutters">
         <div class="col-md-4">
-            <img src="..." class="card-img" alt="...">
+            <img src="/static/img/paper_vertical.jpg" class="card-img" alt="...">
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                <h6 class="card-title">Card title</h6>
+                <h5 class="card-title">Reply Form</h5>
                 <p class="card-text">
-                    <div class="row">
-                        <div>
-                            <form action="/reply-form" method="POST">
-                                <div id="view-report">
-                                    <h1>Reply Form</h1>
-                                    <!-- User ID in session -->
 
-                                    <input style="display:none" name="user_id" value="{{ user_id }}"><br>
-                                    <!-- Replying to Inquiry ID# -->
-                                    <input style="display:none" name="inquiry_id" value="{{ inquiry.inquiry_id }}"><br>
-                                    <!-- Responding to thread #  -->
-                                    <input style="display:none" name="responding_to"
-                                        value="{{ inquiry.inquiry_id }}"><br>
-                                    <!-- If report is archived or not #  -->
-                                    <input style="display:none" name="archive" value="{{ inquiry.archive }}"><br>
+                    <div>
+                        <form action="/reply-form" method="POST" id="hidden">
+                            <!-- User ID in session -->
+                            <input style="display:none" name="user_id" value="{{ user_id }}">
+                            <!-- Replying to Inquiry ID# -->
+                            <input style="display:none" name="inquiry_id" value="{{ inquiry.inquiry_id }}">
+                            <!-- Responding to thread #  -->
+                            <input style="display:none" name="responding_to" value="{{ inquiry.inquiry_id }}">
+                            <!-- If report is archived or not #  -->
+                            <input style="display:none" name="archive" value="{{ inquiry.archive }}">
 
-
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <label>Today's Date: </label>
-                                        </div>
-                                        <div class="col-9">
-                                            <input type="date" name="todays_date" placeholder="today's date"><br>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <label>Reply: </label>
-                                        </div>
-                                        <div class="col-9">
-                                            <textarea type="text" name="response_text" placeholder="Reply..."
-                                                id="myTextArea" rows="5" cols="30"> </textarea><br>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <button id="savebtn">Submit Reply</button>
-                                        </div>
-                                    </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <label>Today's Date: </label>
                                 </div>
-                            </form>
-                        </div>
-                </p>
+                                <div class="col-9">
+                                    <input type="date" name="todays_date" placeholder="today's date"><br>
+                                </div>
+                            </div>
 
+                            <div class="row">
+                                <div class="col-3">
+                                    <label>Reply: </label>
+                                </div>
+                                <div class="col-9">
+                                    <textarea type="text" name="response_text" placeholder="Reply..." id="myTextArea"
+                                        rows="5" cols="30"> </textarea><br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <button id="savebtn">Submit Reply</button>
+                                </div>
+                            </div>
+                    </div>
+                    </form>
             </div>
+            </p>
+
+
         </div>
     </div>
 </div>
 
 </div>
-
-
-
-
-
-
 
 {% endblock %}

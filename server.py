@@ -211,6 +211,12 @@ def reply_form():
 
     return redirect(f"/inquiry/{inquiry_id}")
 
+@app.route("/contact")
+def contact():
+    """My contact information with google map api."""
+
+    return render_template("contact.html")
+
 
 
 

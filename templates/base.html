@@ -55,10 +55,14 @@
               </a>
             </li>
             <li class="nav-item">
+              {% if session["user_id"] != 6 %}
               <a class="nav-link" href="/user/{{ session['user_id'] }}"
-                >Homepage</a
-              >
+                >Homepage</a>
+              {% elif session["user_id"] == 6 %}
+              <a class="nav-link" href="/user_list"
+                >Homepage</a>
             </li>
+            {% endif %}
             {% endif %}
             <li class="nav-item">
               <a class="nav-link" href="#about">About</a>

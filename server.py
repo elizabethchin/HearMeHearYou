@@ -4,7 +4,7 @@ from jinja2 import StrictUndefined
 
 from flask import Flask, render_template, redirect, request, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
-
+from secret import keys 
 from model import connect_to_db, db, User, Inquiry, Response
 
 app = Flask(__name__)
@@ -215,7 +215,7 @@ def reply_form():
 def contact():
     """My contact information with google map api."""
 
-    return render_template("contact.html")
+    return render_template("contact.html", google_map_api=keys['google_map_api'])
 
 
 

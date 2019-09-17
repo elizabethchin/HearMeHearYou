@@ -1,7 +1,32 @@
 {% extends 'base.html'%}
-{% block title %}Contact Me{% endblock %}
+{% block title %}Create Report{% endblock %}
 
-Hello
 
 {% block content %}
+<link rel="stylesheet" href="/static/css/mapstyle.css">
+
+
+
+
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-6">
+            <div id="map"></div>
+        </div>
+        <div class="col-md-6">
+            <div class="card-body" id="elizabeth">
+                <h3 class="card-title">Contact Me!</h3>
+                <img src="/static/img/code.jpg" class="card-img" alt="picture of file rack">
+                <p class="card-text" style="font-size: 24px;">
+                    <i class="fa fa-envelope fa-10x" aria-hidden="true">/elizabethtchin@gmail.com</i><br>
+                    <i class="fa fa-linkedin-square fa-10x" aria-hidden="true">/elizabethtchin</i><br>
+                    <i class="fa fa-github-square fa-10x" aria-hidden="true">/elizabethchin</i><br>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/map.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{google_map_api}}&callback=initMap" async defer></script>
 {% endblock %}

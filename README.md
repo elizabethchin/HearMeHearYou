@@ -2,18 +2,25 @@
 
 **HearMeHearYou** is a confidential resource to resolve workplace issues. My vision is for companies to adopt this platform with independent oversight. With encryption built in users can submit inquiries securely with the option to remain anonymous. Employees can seek advice on career development, any workplace conflicts such as bullying, sexual harassment, whatever concerns they have. The hope is to create a better work environment and democratize workplace support.
 
-Landing Page and Login
-  
-![Landing Page and Login](<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/LQhncSOTDVMLQK3UgD" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/LQhncSOTDVMLQK3UgD">via GIPHY</a></p>)
+
+### Landing Page and Login
+
+<div  style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe  src="https://giphy.com/embed/LQhncSOTDVMLQK3UgD"  width="100%"  height="100%"  style="position:absolute"  frameBorder="0"  class="giphy-embed"  allowFullScreen></iframe></div><p><a  href="https://giphy.com/gifs/LQhncSOTDVMLQK3UgD"></a></p>
+
 <br/><br/><br/>
-User's Dashboard and Report Submission
-  
-![User's Dashboard and Report Submission](<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/kGdGPObxe9D8siZitK" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/kGdGPObxe9D8siZitK">via GIPHY</a></p>)
+
+### User's Dashboard and Report Submission
+
+<div  style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe  src="https://giphy.com/embed/kGdGPObxe9D8siZitK"  width="100%"  height="100%"  style="position:absolute"  frameBorder="0"  class="giphy-embed"  allowFullScreen></iframe></div><p><a  href="https://giphy.com/gifs/kGdGPObxe9D8siZitK"></a></p>
+
 <br/><br/><br/>
-Admin view and reply to reports
-  
-![Admin view and reply to reports](<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/QxGbnyvkK1qNabiWc3" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/QxGbnyvkK1qNabiWc3">via GIPHY</a></p>)
+
+### Admin view and reply to reports
+
+<div  style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe  src="https://giphy.com/embed/QxGbnyvkK1qNabiWc3"  width="100%"  height="100%"  style="position:absolute"  frameBorder="0"  class="giphy-embed"  allowFullScreen></iframe></div><p><a  href="https://giphy.com/gifs/QxGbnyvkK1qNabiWc3"></a></p>
+
 <br/><br/><br/>
+
 
 
 

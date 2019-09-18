@@ -76,7 +76,7 @@ $ python3 server.py
 - Deployment - <a href="www.hearmehearyou.com"> www.hearmehearyou.com
 -  SocketIO for instant messaging
 
-## <a name="installation"></a>About the Developer
+## <a name="developer"></a>About the Developer
 This is Elizabeth's first project, she loves how programming constantly challenges her and the juxtaposition of structure and creativity it offers. Checkout her <a href="https://www.linkedin.com/in/elizabethtchin/">Linkedin</a>
 
 

@@ -32,7 +32,7 @@
 - Python 3.7.4
 - Google Map API Key
 
-To have this app running on your local computer, please follow the below steps:
+To have this app running on your local computer, please do the following:
 
 Clone repository:
 

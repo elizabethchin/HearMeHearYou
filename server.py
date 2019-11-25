@@ -119,7 +119,7 @@ def create_report():
 
 @app.route("/handle-report", methods=["POST"])
 def handle_report():
-    """Submit report to HearMe."""
+    """Submit report to admin dept."""
     
     todays_date = request.form.get("todays_date")
     incident_date = request.form.get("incident_date")
@@ -129,12 +129,10 @@ def handle_report():
     user_id = session["user_id"]
     archive = False
 
-    print("HEREEEEEE")
+
     print(anonymous)
     anonymous = anonymous == "True"
     print(anonymous)
-
-
 
     new_inquiry = Inquiry(user_id=user_id, todays_date=todays_date, subject=subject, 
     incident_date=incident_date,inquiry_text=inquiry_text, anonymous=bool(anonymous), archive=archive)
@@ -176,6 +174,7 @@ def save_report():
 
 @app.route("/user_list")
 def list_users():
+    """Show's admin all of the users"""
 
     if session["user_id"] == 6:
 

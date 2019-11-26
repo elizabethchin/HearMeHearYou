@@ -14,9 +14,7 @@ from secret import keys
 # secret_key = "mykey123"
 
 
-# This is the connection to the PostgreSQL database; we're getting this through
-# the Flask-SQLAlchemy helper library. On this, we can find the `session`
-# object, where we do most of our interactions (like committing, etc.)
+# This connects to PostgreSQL database through Flask-SQLAlchemy library. 
 
 db = SQLAlchemy()
 
@@ -37,9 +35,11 @@ class User(db.Model):
 
     inquiries = db.relationship('Inquiry')
     responses = db.relationship("Response")
+    #user has many inquiries
+    #user has many responses thru inquiries
 
     def __repr__(self):
-        """Provide helpful representation when printed."""
+        """Provides helpful representation when printed."""
         
         return ("<User information: user_id={} first_name={} last_name={} email={} password={}>"
             .format(self.user_id, self.first_name, self.last_name, self.email, self.password))
@@ -60,9 +60,11 @@ class Inquiry(db.Model):
 
     user = db.relationship('User')
     responses = db.relationship("Response")
+    #inquiry belongs to one user
+    #inquiry has many responses
 
     def __repr__(self):
-        """Provide helpful representation when printed."""
+        """Provides helpful representation when printed."""
         return """<Inquiry: inquiry_id={} user_id={} todays_date={} incident_date={}
                 subject={} incident_text={} anonymous={}>""".format(self.inquiry_id, self.user_id, self.todays_date, 
                 self.incident_date, self.subject, self.inquiry_text, self.anonymous, self.archive)
@@ -81,9 +83,11 @@ class Response(db.Model):
 
     user = db.relationship('User')
     inquiries = db.relationship('Inquiry')
+    #response has many users
+    #responses belong to one inquiry
 
     def __repr__(self):
-        """Provide helpful representation when printed."""
+        """Provides helpful representation when printed."""
         return """<Response: response_id={} inquiry_id={} user_id={} response_date={}
                 responding_to={} response_text={}>""".format(self.response_id, self.inquiry_id, self.user_id, self.response_date, 
                 self.responding_to, self.response_text)

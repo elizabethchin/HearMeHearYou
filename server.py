@@ -176,14 +176,18 @@ def save_report():
 def list_users():
     """Show's admin all of the users"""
 
-    if session["user_id"] == 6:
+    if "user_id" in session:
+        
+        if session["user_id"] == 6:
+            
+            inquiries = Inquiry.query.filter_by(anonymous=True).all()
+            users = User.query.all()
+            return render_template("user_list.html", users=users, inquiries=inquiries)
 
-        inquiries = Inquiry.query.filter_by(anonymous=True).all()
-        users = User.query.all()
-        return render_template("user_list.html", users=users, inquiries=inquiries)
-    
+        else:
+            return redirect("/")
     else:
-        return redirect("/")
+        return redirect("/login_page")
 
 
 @app.route("/reply-form", methods=["POST"])
@@ -199,7 +203,6 @@ def reply_form():
 
     response_date= response_date[:11]
 
-    print("HEREEEEEEEEEE")
     print(response_date)
 
     new_response = Response(inquiry_id=inquiry_id, user_id=user_id, response_date=response_date,

@@ -13,11 +13,9 @@ from secret import keys
 
 # secret_key = "mykey123"
 
-
 # This connects to PostgreSQL database through Flask-SQLAlchemy library. 
 
 db = SQLAlchemy()
-
 
 ##############################################################################
 # Model definitions
